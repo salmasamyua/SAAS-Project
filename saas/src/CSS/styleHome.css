@@ -1,0 +1,334 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+body {
+  font-family: "Lato", sans-serif !important;
+}
+
+div .navbar {
+  background-color: #064B68;
+}
+
+div .navbar a h1 {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0;
+  vertical-align: middle;
+  color: #ffffff !important;
+}
+
+div .navbar a img {
+  width: 22px;
+  margin-right: 5px;
+}
+
+div .navbar .navbar-collapse {
+  -webkit-box-flex: 0 !important;
+      -ms-flex-positive: 0 !important;
+          flex-grow: 0 !important;
+}
+
+div .navbar .navbar-collapse a img {
+  border-radius: 20px;
+  margin-left: 8px;
+}
+
+div .navbar .navbar-collapse .dropdown-menu {
+  background-color: #064B68;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a {
+  text-decoration: none;
+  color: #AAC9D3;
+  display: block;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button, div .navbar .navbar-collapse .dropdown-menu a i {
+  float: right;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button {
+  padding: 4px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: small;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a:hover, div .navbar .navbar-collapse .dropdown-menu .dropdown-item.active {
+  background-color: #AAC9D3;
+  color: #064B68;
+}
+
+.modal .modal-body h3 {
+  display: inline-block;
+  color: #064B68;
+  margin-bottom: 50px;
+}
+
+.modal .modal-body button {
+  color: #064B68;
+  border: none;
+  background-color: white;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.modal .modal-body button .bi-caret-right {
+  float: right;
+}
+
+.modal .modal-body button .bi-lock-fill, .modal .modal-body button .bi-phone {
+  margin-right: 5px;
+}
+
+.modal .modal-body form {
+  padding: 0 20px;
+}
+
+.modal .modal-body form input[type=password], .modal .modal-body form input[type=text] {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.modal .modal-body form input[type=submit] {
+  padding: 10px 20px;
+  margin: 5px 0;
+  background-color: #064B68;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+}
+
+.modal .modal-body form input[type=submit]:hover {
+  opacity: 0.7;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.sectionHome0 {
+  background-image: url(../../public/Images/background.png);
+  background-size: cover;
+  height: 675px;
+  padding-top: 100px;
+  color: #ffffff;
+}
+
+.sectionHome0 .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sectionHome0 .row .text h3 {
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
+.sectionHome0 .row img {
+  width: 95%;
+}
+
+@media screen and (max-width: 786px) {
+  .sectionHome0 .row .col1 {
+    margin-top: 30px;
+  }
+  .sectionHome0 .row .col1 img {
+    width: 70%;
+  }
+}
+
+.sectionHome1 {
+  height: 600px;
+  margin: 20px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sectionHome1 .row {
+  margin-top: 20px;
+  color: #ffffff;
+  margin: 10px 0px;
+}
+
+.sectionHome1 .row h3 {
+  margin-bottom: 20px;
+  color: #064B68;
+  font-weight: 700;
+}
+
+.sectionHome1 .row .cardd {
+  display: inline-block;
+}
+
+.sectionHome1 .row .cardd .card {
+  width: 150px;
+  height: 150px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  color: black;
+  padding: 15px;
+  margin: 10px;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.sectionHome1 .row .cardd .card .circle {
+  text-align: center;
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  padding: 20px;
+  margin: auto;
+}
+
+.sectionHome1 .row .cardd .card .circlea {
+  border: 5px solid #50AD52;
+  color: #50AD52;
+}
+
+.sectionHome1 .row .cardd .card .circleb {
+  border: 5px solid #1A76D3;
+  color: #1A76D3;
+}
+
+@media screen and (max-width: 786px) {
+  .sectionHome1 .row .cardd .card {
+    width: 150px;
+    height: 150px;
+  }
+  .sectionHome1 .row .cardd .card .circle {
+    font-size: large;
+    padding: 20px;
+    width: 75px;
+    height: 75px;
+  }
+  .sectionHome1 .row .col2 {
+    margin-top: 50px;
+  }
+}
+
+.sectionHome2 {
+  background-image: url(../../public/Images/background2.png);
+  background-size: cover;
+  padding: 40px 0px;
+  margin-bottom: 30px;
+}
+
+.sectionHome2 h3 {
+  margin-bottom: 20px;
+  color: #064B68;
+  font-weight: 700;
+}
+
+.sectionHome2 .cardds {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.sectionHome2 .cardds .cards {
+  width: 300px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 15px;
+}
+
+.sectionHome2 .cardds .cards h2 {
+  border-radius: 15px;
+  padding: 8px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.sectionHome2 .cardds .cards p {
+  margin-bottom: 5px;
+}
+
+.sectionHome2 .cardds .cards i {
+  margin-right: 5px;
+}
+
+.sectionHome3 {
+  height: 300px;
+  margin-top: 30px;
+}
+
+.sectionHome3 h3 {
+  margin-bottom: 20px;
+  color: #064B68;
+  font-weight: 700;
+}
+
+.sectionHome3 .reco {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 200px;
+}
+
+.sectionHome3 .reco a {
+  padding: 30px;
+  background-color: #064B68;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 80px;
+  font-size: 20px;
+  font-weight: 700;
+}
+/*# sourceMappingURL=styleHome.css.map */

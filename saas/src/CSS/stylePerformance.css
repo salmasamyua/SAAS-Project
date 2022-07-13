@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+body {
+  font-family: "Lato", sans-serif !important;
+}
+
+div .navbar {
+  background-color: #064B68;
+}
+
+div .navbar a h1 {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0;
+  vertical-align: middle;
+  color: #ffffff !important;
+}
+
+div .navbar a img {
+  width: 22px;
+  margin-right: 5px;
+}
+
+div .navbar .navbar-collapse {
+  -webkit-box-flex: 0 !important;
+      -ms-flex-positive: 0 !important;
+          flex-grow: 0 !important;
+}
+
+div .navbar .navbar-collapse a img {
+  border-radius: 20px;
+  margin-left: 8px;
+}
+
+div .navbar .navbar-collapse .dropdown-menu {
+  background-color: #064B68;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a {
+  text-decoration: none;
+  color: #AAC9D3;
+  display: block;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button, div .navbar .navbar-collapse .dropdown-menu a i {
+  float: right;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button {
+  padding: 4px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: small;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a:hover, div .navbar .navbar-collapse .dropdown-menu .dropdown-item.active {
+  background-color: #AAC9D3;
+  color: #064B68;
+}
+
+.secAnaysis1 {
+  background-image: url(../../public/Images/performance.png);
+  background-size: cover;
+  height: 500px;
+  padding-top: 100px;
+  color: #ffffff;
+}
+
+.secAnaysis1 h2 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.secAnaysis1 h2 a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.secAnaysis1 h2 p {
+  display: inline-block;
+  color: rgba(173, 173, 173, 0.685);
+  font-weight: 100;
+  font-size: smaller;
+}
+
+.secAnaysis2 {
+  margin: 50px 0px;
+}
+
+.secAnaysis2 .collapsible {
+  background-color: whitesmoke;
+  color: #064B68;
+  padding: 18px;
+  margin: 10px 0px;
+  width: 100%;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.secAnaysis2 .middle {
+  margin: 5px 0px;
+  width: 100%;
+}
+
+.secAnaysis2 .bar-container {
+  width: 100%;
+  background-color: #dddddd;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+}
+
+.secAnaysis2 .bar-5 {
+  width: 75%;
+  background-color: #04AA6D;
+}
+
+.secAnaysis2 .bar-4 {
+  width: 85%;
+  background-color: #2196F3;
+}
+
+.secAnaysis2 .bar-3 {
+  width: 70%;
+  background-color: #00bcd4;
+}
+
+.secAnaysis2 .bar-container, .secAnaysis2 .bar-5, .secAnaysis2 .bar-4, .secAnaysis2 .bar-3 {
+  border-radius: 10px;
+  height: 20px;
+}
+
+.secAnaysis2 .active, .secAnaysis2 .collapsible:hover {
+  background-color: #f1f1f1;
+}
+
+.secAnaysis2 .active {
+  border-radius: 10px 10px 0 0;
+}
+
+.secAnaysis2 .card {
+  padding: 15px 20px;
+  border-radius: 0 0 10px 10px;
+  background-color: #f1f1f1;
+}
+
+.secAnaysis2 .card b {
+  float: right;
+}
+
+@media screen and (max-width: 1100px) {
+  .secAnaysis1 {
+    height: 300px;
+    padding-top: 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .secAnaysis1 {
+    height: 200px;
+    padding-top: 30px;
+    margin-top: 30px;
+  }
+}
+/*# sourceMappingURL=stylePerformance.css.map */

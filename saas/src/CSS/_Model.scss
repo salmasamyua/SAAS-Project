@@ -1,0 +1,59 @@
+.modal{
+    .modal-body{
+        h3{
+            display: inline-block;
+            color: $mainColor;
+            margin-bottom: 50px;
+        }
+        button{
+            color: $mainColor;
+            border: none;
+            background-color: white;
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: left;
+            .bi-caret-right{
+                float: right;
+            }
+            .bi-lock-fill, .bi-phone{
+                margin-right: 5px;
+            }
+        }
+        form{
+            padding: 0 20px;
+            input[type=password], input[type=text]{
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+                padding: 5px;
+            }
+            input[type=submit]{
+                padding: 10px 20px;
+                margin: 5px 0;
+                background-color: $mainColor;
+                color: $white;
+                border: none;
+                border-radius: 30px;
+            }
+            input[type=submit]:hover{
+                opacity: 0.7;
+            }
+        }
+    }
+    
+}
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+      }
+      
+      @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)} 
+        to {-webkit-transform: scale(1)}
+      }
+        
+      @keyframes animatezoom {
+        from {transform: scale(0)} 
+        to {transform: scale(1)}
+      }

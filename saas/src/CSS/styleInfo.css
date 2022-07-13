@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+body {
+  font-family: "Lato", sans-serif !important;
+}
+
+div .navbar {
+  background-color: #064B68;
+}
+
+div .navbar a h1 {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0;
+  vertical-align: middle;
+  color: #ffffff !important;
+}
+
+div .navbar a img {
+  width: 22px;
+  margin-right: 5px;
+}
+
+div .navbar .navbar-collapse {
+  -webkit-box-flex: 0 !important;
+      -ms-flex-positive: 0 !important;
+          flex-grow: 0 !important;
+}
+
+div .navbar .navbar-collapse a img {
+  border-radius: 20px;
+  margin-left: 8px;
+}
+
+div .navbar .navbar-collapse .dropdown-menu {
+  background-color: #064B68;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a {
+  text-decoration: none;
+  color: #AAC9D3;
+  display: block;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button, div .navbar .navbar-collapse .dropdown-menu a i {
+  float: right;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button {
+  padding: 4px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: small;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a:hover, div .navbar .navbar-collapse .dropdown-menu .dropdown-item.active {
+  background-color: #AAC9D3;
+  color: #064B68;
+}
+
+.info:first-of-type {
+  margin-top: 70px;
+}
+
+.info {
+  margin-top: 30px;
+}
+
+.info .row img {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.info .row .colInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.info .row .colInfo .text {
+  padding: 8px 12px;
+  margin-left: 10px;
+}
+
+.info .row .colInfo .text h3 {
+  color: #064B68;
+  font-size: 25px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.info .row .colInfo .text p {
+  margin-top: 10px;
+  font-size: 18px;
+  opacity: 0.8;
+}
+/*# sourceMappingURL=styleInfo.css.map */

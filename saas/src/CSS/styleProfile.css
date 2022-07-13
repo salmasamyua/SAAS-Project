@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+body {
+  font-family: "Lato", sans-serif !important;
+}
+
+div .navbar {
+  background-color: #064B68;
+}
+
+div .navbar a h1 {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0;
+  vertical-align: middle;
+  color: #ffffff !important;
+}
+
+div .navbar a img {
+  width: 22px;
+  margin-right: 5px;
+}
+
+div .navbar .navbar-collapse {
+  -webkit-box-flex: 0 !important;
+      -ms-flex-positive: 0 !important;
+          flex-grow: 0 !important;
+}
+
+div .navbar .navbar-collapse a img {
+  border-radius: 20px;
+  margin-left: 8px;
+}
+
+div .navbar .navbar-collapse .dropdown-menu {
+  background-color: #064B68;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a {
+  text-decoration: none;
+  color: #AAC9D3;
+  display: block;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button, div .navbar .navbar-collapse .dropdown-menu a i {
+  float: right;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a button {
+  padding: 4px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: small;
+}
+
+div .navbar .navbar-collapse .dropdown-menu a:hover, div .navbar .navbar-collapse .dropdown-menu .dropdown-item.active {
+  background-color: #AAC9D3;
+  color: #064B68;
+}
+
+.sectionProfile {
+  padding-top: 50px;
+}
+
+.sectionProfile .row {
+  height: 800px;
+}
+
+.sectionProfile .row .colProfile0, .sectionProfile .row .profile, .sectionProfile .row .colProfile1, .sectionProfile .row .colProfile2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sectionProfile .row .colProfile0 {
+  padding: 100px 0 0 0;
+  background-image: url(../../public/Images/background.png);
+  height: 100%;
+  background-size: cover;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sectionProfile .row .colProfile0 .profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 150px;
+  background-image: url(../../public/Images/profile.jpeg);
+  background-size: cover;
+}
+
+.sectionProfile .row .colProfile0 h4 {
+  padding: 10px;
+  margin: 0;
+  font-weight: 700;
+  color: #AAC9D3;
+}
+
+.sectionProfile .row .colProfile0 p {
+  color: #AAC9D3;
+}
+
+.sectionProfile .row .colProfile1 {
+  margin: auto;
+}
+
+.sectionProfile .row .colProfile1 button {
+  color: #ffffff;
+  background-color: #064B68;
+  border: none;
+  font-weight: 900;
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  border-right: 2px solid black;
+  cursor: pointer;
+}
+
+.sectionProfile .row .colProfile1 button:hover, .sectionProfile .row .colProfile1 .collapsed {
+  background-color: #ffffff;
+  color: #064B68;
+  border-right: 2px solid #064B68;
+}
+
+.sectionProfile .row .colProfile1 table {
+  width: 90%;
+  margin: auto;
+}
+
+.sectionProfile .row .colProfile1 table th {
+  padding: 15px;
+  width: 40%;
+}
+
+.sectionProfile .row .colProfile1 table td {
+  border-bottom: 1px solid #ebebeb;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .sectionProfile {
+    padding: 0px;
+  }
+  .sectionProfile .row {
+    height: 1200px;
+  }
+  .sectionProfile .row .colProfile0 {
+    padding-top: 85px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sectionProfile {
+    padding: 0px;
+  }
+  .sectionProfile .row {
+    height: 1200px;
+  }
+  .sectionProfile .row .colProfile0 {
+    margin-top: 50px;
+    padding-top: 20px;
+    margin-bottom: 100px;
+  }
+  .sectionProfile .row .colProfile1 {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+}
+/*# sourceMappingURL=styleProfile.css.map */

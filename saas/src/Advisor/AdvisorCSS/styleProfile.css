@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+.navbar {
+  background-color: #064B68;
+}
+
+.navbar a h1 {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.navbar .dropdown {
+  -webkit-box-flex: 0 !important;
+      -ms-flex-positive: 0 !important;
+          flex-grow: 0 !important;
+}
+
+.navbar .dropdown a {
+  color: #ffffff;
+}
+
+.navbar .dropdown a img {
+  width: 22px;
+  border-radius: 20px;
+  margin-left: 8px;
+}
+
+.navbar .dropdown .dropdown-menu {
+  background-color: #064B68;
+}
+
+.navbar .dropdown .dropdown-menu a {
+  text-decoration: none;
+  color: #AAC9D3;
+  display: inline-block;
+}
+
+.navbar .dropdown .dropdown-menu a button, .navbar .dropdown .dropdown-menu a i {
+  float: right;
+}
+
+.navbar .dropdown .dropdown-menu a button {
+  padding: 4px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.navbar .dropdown .dropdown-menu a:hover, .navbar .dropdown .dropdown-menu .active {
+  background-color: #AAC9D3;
+  color: #064B68;
+}
+
+.sectionProfile {
+  padding-top: 50px;
+}
+
+.sectionProfile .row {
+  height: 700px;
+}
+
+.sectionProfile .row .colAdvisor0, .sectionProfile .row .profileAdvisor, .sectionProfile .row .colAdvisor1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sectionProfile .row .colAdvisor0 {
+  padding: 100px 0 0 0;
+  background-image: url(../../../public/Images/background.png);
+  height: 100%;
+  background-size: cover;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sectionProfile .row .colAdvisor0 .profileAdvisor {
+  width: 200px;
+  height: 200px;
+  border-radius: 150px;
+  background-image: url(../../../public/Images/profilemale.jpg);
+  background-size: cover;
+}
+
+.sectionProfile .row .colAdvisor0 h4 {
+  padding: 10px;
+  margin: 0;
+  font-weight: 700;
+  color: #AAC9D3;
+}
+
+.sectionProfile .row .colAdvisor0 p {
+  color: #AAC9D3;
+}
+
+.sectionProfile .row .colAdvisor1 {
+  margin: auto;
+}
+
+.sectionProfile .row .colAdvisor1 button {
+  background-color: #ffffff;
+  border: none;
+  color: #064B68;
+  font-weight: 900;
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  border-right: 2px solid black;
+  cursor: pointer;
+}
+
+.sectionProfile .row .colAdvisor1 button:hover, .sectionProfile .row .colAdvisor1 .collapsed {
+  color: #ffffff;
+  background-color: #064B68;
+  border-right: 2px solid #064B68;
+}
+
+.sectionProfile .row .colAdvisor1 table {
+  width: 90%;
+  margin: auto;
+}
+
+.sectionProfile .row .colAdvisor1 table th {
+  padding: 15px;
+  width: 40%;
+}
+
+.sectionProfile .row .colAdvisor1 table td {
+  border-bottom: 1px solid #ebebeb;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .sectionProfile {
+    padding: 0px;
+  }
+  .sectionProfile .row {
+    height: 1200px;
+  }
+  .sectionProfile .row .colAdvisor0 {
+    padding-top: 75px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sectionProfile {
+    padding: 0px;
+  }
+  .sectionProfile .row {
+    height: 1200px;
+  }
+  .sectionProfile .row .colAdvisor0 {
+    margin-top: 50px;
+    padding-top: 20px;
+    margin-bottom: 100px;
+  }
+  .sectionProfile .row .colAdvisor1 {
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+}
+/*# sourceMappingURL=styleProfile.css.map */

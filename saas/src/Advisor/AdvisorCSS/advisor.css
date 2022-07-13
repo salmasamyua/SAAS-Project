@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+.navbar {
+  background-color: #064B68;
+}
+
+.navbar a h1 {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.navbar .dropdown {
+  -webkit-box-flex: 0 !important;
+      -ms-flex-positive: 0 !important;
+          flex-grow: 0 !important;
+}
+
+.navbar .dropdown a {
+  color: #ffffff;
+}
+
+.navbar .dropdown a img {
+  width: 22px;
+  border-radius: 20px;
+  margin-left: 8px;
+}
+
+.navbar .dropdown .dropdown-menu {
+  background-color: #064B68;
+}
+
+.navbar .dropdown .dropdown-menu a {
+  text-decoration: none;
+  color: #AAC9D3;
+  display: inline-block;
+}
+
+.navbar .dropdown .dropdown-menu a button, .navbar .dropdown .dropdown-menu a i {
+  float: right;
+}
+
+.navbar .dropdown .dropdown-menu a button {
+  padding: 4px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.navbar .dropdown .dropdown-menu a:hover, .navbar .dropdown .dropdown-menu .active {
+  background-color: #AAC9D3;
+  color: #064B68;
+}
+
+.advisor {
+  background-color: rgba(233, 231, 231, 0.842) !important;
+}
+
+.advisor .secAdvisor0 {
+  background-image: url(../../../public/Images/background.png);
+  background-size: cover;
+  height: 675px;
+  padding-top: 100px;
+  color: #ffffff;
+}
+
+.advisor .secAdvisor0 .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.advisor .secAdvisor0 .row .text h3 {
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
+.advisor .secAdvisor0 .row .colAdvisor1 img {
+  width: 95%;
+}
+
+.advisor .secAdvisor1 {
+  padding: 50px 0px;
+  padding-bottom: 100px;
+}
+
+.advisor .secAdvisor1 .container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+      grid-template-areas: "card1 card1 card4" "card2 card3 card4" "card5 card5 card6";
+  justify-items: center;
+}
+
+.advisor .secAdvisor1 .card1, .advisor .secAdvisor1 .card2, .advisor .secAdvisor1 .card3, .advisor .secAdvisor1 .card4, .advisor .secAdvisor1 .card5, .advisor .secAdvisor1 .card6 {
+  background-color: #ffffff;
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  width: 90%;
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.158);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.158);
+  cursor: pointer;
+}
+
+.advisor .secAdvisor1 .card1 i, .advisor .secAdvisor1 .card2 i, .advisor .secAdvisor1 .card3 i, .advisor .secAdvisor1 .card4 i, .advisor .secAdvisor1 .card5 i, .advisor .secAdvisor1 .card6 i {
+  color: #064B68;
+  font-size: 35px;
+}
+
+.advisor .secAdvisor1 .card1 h6, .advisor .secAdvisor1 .card2 h6, .advisor .secAdvisor1 .card3 h6, .advisor .secAdvisor1 .card4 h6, .advisor .secAdvisor1 .card5 h6, .advisor .secAdvisor1 .card6 h6 {
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+.advisor .secAdvisor1 .card1:hover, .advisor .secAdvisor1 .card2:hover, .advisor .secAdvisor1 .card3:hover, .advisor .secAdvisor1 .card4:hover, .advisor .secAdvisor1 .card5:hover, .advisor .secAdvisor1 .card6:hover {
+  background-color: #f3f3f3;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.advisor .secAdvisor1 .card1:hover i, .advisor .secAdvisor1 .card2:hover i, .advisor .secAdvisor1 .card3:hover i, .advisor .secAdvisor1 .card4:hover i, .advisor .secAdvisor1 .card5:hover i, .advisor .secAdvisor1 .card6:hover i {
+  font-size: 38px;
+}
+
+.advisor .secAdvisor1 .card1:hover h6, .advisor .secAdvisor1 .card2:hover h6, .advisor .secAdvisor1 .card3:hover h6, .advisor .secAdvisor1 .card4:hover h6, .advisor .secAdvisor1 .card5:hover h6, .advisor .secAdvisor1 .card6:hover h6 {
+  font-size: 28px;
+}
+
+.advisor .secAdvisor1 .card1, .advisor .secAdvisor1 .card5 {
+  width: 95%;
+}
+
+.advisor .secAdvisor1 .card1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: card1;
+  height: 150px;
+}
+
+.advisor .secAdvisor1 .card2 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: card2;
+  height: 150px;
+}
+
+.advisor .secAdvisor1 .card3 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: card3;
+  height: 150px;
+}
+
+.advisor .secAdvisor1 .card4 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  grid-area: card4;
+  height: 95%;
+}
+
+.advisor .secAdvisor1 .card4 i {
+  font-size: 40px !important;
+}
+
+.advisor .secAdvisor1 .card4:hover i {
+  font-size: 45px !important;
+}
+
+.advisor .secAdvisor1 .card5 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: card5;
+  height: 150px;
+}
+
+.advisor .secAdvisor1 .card6 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: card6;
+  height: 150px;
+}
+
+.advisor .goBack {
+  padding: 50px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.advisor .goBack a {
+  text-decoration: none;
+  padding: 20px 30px;
+  font-size: larger;
+  border-radius: 50px;
+  font-weight: 700;
+  background-color: inherit;
+  color: #064B68;
+}
+
+.advisor .goBack a:hover {
+  color: #ffffff;
+  background-color: #064B68;
+}
+
+@media screen and (max-width: 786px) {
+  .advisor .secAdvisor0 {
+    padding-top: 70px;
+  }
+  .advisor .secAdvisor0 .row {
+    margin: auto;
+  }
+  .advisor .secAdvisor0 .row .text h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .advisor .secAdvisor0 .row .colAdvisor1 {
+    padding-bottom: 100px;
+  }
+  .advisor .secAdvisor0 .row .colAdvisor1 img {
+    width: 95%;
+  }
+}
+
+@media (max-width: 786px) {
+  .advisor .secAdvisor1 {
+    margin: 0px;
+    padding-bottom: 100px;
+  }
+  .advisor .secAdvisor1 .card1, .advisor .secAdvisor1 .card2, .advisor .secAdvisor1 .card3, .advisor .secAdvisor1 .card4, .advisor .secAdvisor1 .card5, .advisor .secAdvisor1 .card6 {
+    padding: 10px 15px;
+    margin: 5px 10px;
+  }
+  .advisor .secAdvisor1 .card1 i, .advisor .secAdvisor1 .card2 i, .advisor .secAdvisor1 .card3 i, .advisor .secAdvisor1 .card4 i, .advisor .secAdvisor1 .card5 i, .advisor .secAdvisor1 .card6 i {
+    color: #064B68;
+    font-size: 25px;
+  }
+  .advisor .secAdvisor1 .card1 h6, .advisor .secAdvisor1 .card2 h6, .advisor .secAdvisor1 .card3 h6, .advisor .secAdvisor1 .card4 h6, .advisor .secAdvisor1 .card5 h6, .advisor .secAdvisor1 .card6 h6 {
+    font-size: 18px;
+  }
+  .advisor .secAdvisor1 .card1:hover i, .advisor .secAdvisor1 .card2:hover i, .advisor .secAdvisor1 .card3:hover i, .advisor .secAdvisor1 .card4:hover i, .advisor .secAdvisor1 .card5:hover i, .advisor .secAdvisor1 .card6:hover i {
+    font-size: 25px;
+  }
+  .advisor .secAdvisor1 .card1:hover h6, .advisor .secAdvisor1 .card2:hover h6, .advisor .secAdvisor1 .card3:hover h6, .advisor .secAdvisor1 .card4:hover h6, .advisor .secAdvisor1 .card5:hover h6, .advisor .secAdvisor1 .card6:hover h6 {
+    font-size: 17px;
+  }
+  .advisor .secAdvisor1 .card4:hover i {
+    font-size: 30px !important;
+  }
+}
+
+#cal, #pdf {
+  padding: 50px 0;
+}
+/*# sourceMappingURL=advisor.css.map */

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+$mainColor: #064B68;
+$seconderyColor: #AAC9D3;
+$white: #ffffff;
+$mainFont: 'Lato', sans-serif;
+
+    .navbar{
+        background-color: $mainColor;
+        a{
+            h1{
+                display: inline-block;
+                font-size: 25px;
+                margin: 0;
+                vertical-align: middle;
+            }
+        }
+        .dropdown{
+            flex-grow: 0 !important;
+            a{
+                color: $white;
+                img{
+                    width: 22px;
+                    border-radius: 20px;
+                    margin-left: 8px;
+                }
+            }
+            .dropdown-menu{
+                background-color: $mainColor;
+                a{
+                    text-decoration: none;
+                    color: $seconderyColor;
+                    display: inline-block;
+                    button, i{
+                        float: right;
+                    }
+                    button{
+                        padding: 4px;
+                        border: none;
+                        background-color: $white;
+                        border-radius: 5px;
+                        font-size: small;
+                    }
+                }
+                a:hover, .active{
+                    background-color: $seconderyColor;
+                    color: $mainColor;
+                }
+            }
+        }
+    }
+
+@mixin cover {
+    background-image: url(../../../public/Images/background.png);
+    background-size: cover;
+    height: 675px;
+    padding-top: 100px;
+    color: $white;
+}

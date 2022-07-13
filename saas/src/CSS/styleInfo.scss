@@ -1,0 +1,36 @@
+@import 'Header';
+
+.info:first-of-type{
+    margin-top: 70px;
+}
+
+.info{
+    margin-top: 30px;
+    .row{
+        img{
+            width: 100%;
+            display: block;
+            margin: auto;
+        }
+        .colInfo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .text {
+                padding: 8px 12px;
+                margin-left: 10px;
+                h3{
+                    color: $mainColor;
+                    font-size: 25px;
+                    font-weight: 900;
+                    margin-bottom: 20px;
+                }
+                p{
+                    margin-top: 10px;
+                    font-size: 18px;
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}

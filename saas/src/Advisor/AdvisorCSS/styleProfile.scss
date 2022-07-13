@@ -1,0 +1,99 @@
+@import 'Header';
+
+.sectionProfile{
+    padding-top: 50px;
+    .row{
+        height: 700px;
+        .colAdvisor0, .profileAdvisor, .colAdvisor1{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .colAdvisor0{
+            padding: 100px 0 0 0;
+            background-image: url(../../../public/Images/background.png);
+            height: 100%;
+            background-size: cover;
+            justify-content: start;
+            align-items: center;
+            .profileAdvisor{
+                width: 200px;
+                height: 200px;
+                border-radius: 150px;
+                background-image: url(../../../public/Images/profilemale.jpg);
+                background-size: cover;
+            }
+            h4{
+                padding: 10px;
+                margin: 0;
+                font-weight: 700;
+                color: $seconderyColor;
+            }
+            p{
+                color: $seconderyColor;
+            }
+        }
+        .colAdvisor1{
+            margin: auto;
+            button{
+                background-color: $white;
+                border: none;
+                color: $mainColor;
+                font-weight: 900;
+                display: block;
+                padding: 5px;
+                margin: 5px;
+                border-right: 2px solid black;
+                cursor: pointer;
+            }
+            button:hover, .collapsed{
+                color: $white;
+                background-color: $mainColor;
+                border-right: 2px solid $mainColor;
+            }
+            table{
+                width: 90%;
+                margin: auto;
+                th{
+                    padding: 15px;
+                    width: 40%;
+                }
+                td{
+                    border-bottom: 1px solid rgb(235, 235, 235);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+    .sectionProfile{
+        padding: 0px;
+        .row{
+            height: 1200px;
+            .colAdvisor0{
+                padding-top: 75px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px){
+    .sectionProfile{
+        padding: 0px;
+        .row{
+            height: 1200px;
+            .colAdvisor0{
+                margin-top: 50px;
+                padding-top: 20px;
+                margin-bottom: 100px;
+            }
+            .colAdvisor1{
+                margin-top: 100px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
