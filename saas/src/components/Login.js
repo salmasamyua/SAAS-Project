@@ -3,6 +3,7 @@ import '../CSS/styleLogin.css';
 //import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+//import {Redirect} from "react-router-dom";
 
 async function loginUser(credentials) {
     return fetch('http://saasproject-001-site1.itempurl.com/api/Acount/Login', {
@@ -49,11 +50,11 @@ export default function Login({setToken}){
                     console.log(result.data.message);
                  }
                  else if(result.data.status === 'success'){
+                    result.data.userLogin.roles[0] = 'Student';
                     if(result.data.userLogin.roles[0] === 'Student'){
                         console.log('Hello ', result.data.userLogin.id);
                         console.log(email, password, result.data.userLogin.roles[0]);
-                        //navigate('/student');     
-                        window.location.replace('/student')
+                        //navigate('/student');
                      }
                      else if(result.data.userLogin.roles[0] === 'Instructor'){
                          console.log('Hello', result.data.userLogin.id);

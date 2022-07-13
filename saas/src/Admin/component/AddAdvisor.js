@@ -130,11 +130,11 @@ export default function AddAdvisor() {
                   </select>
                   <label htmlFor="email">Enter advisor e-mail:</label>
                   <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" required />
-                  <label htmlFor="password">Enter temporary password:</label>
-                  <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" required />
-                  <label htmlFor="emailConfirmed">Enter advisor e-mail:</label>
+                  <label htmlFor="emailConfirmed">Enter advisor e-mail confirme:</label>
                   <input value={emailConfirmed} onChange={(e) => setEmailConfirmed(e.target.value)} type="text" id="emailConfirmed" name="emailConfirmed" required />
                   <label htmlFor="password">Enter temporary password:</label>
+                  <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" required />
+                  <label htmlFor="password">Enter temporary password confirme:</label>
                   <input value={passwordConfirmed} onChange={(e) => setPasswordConfirmed(e.target.value)} type="password" id="passwordConfirmed" name="passwordConfirmed" required />
                   <button type="button" id="addbtn" onClick={handleAddAdvisor}>Add</button>
                 </form>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../CSS/admin.css';
 
 export default function AddCourses() {
@@ -21,6 +21,58 @@ export default function AddCourses() {
       document.querySelector("#addNewCourses").style.marginTop = "-150px";
     }
   }; 
+
+  const userjwt = localStorage['token'];
+  
+  const [courseId, setCourseId] = useState("");
+  const [courseName, setCourseName] = useState("");
+  const [courseNameArabic, setCourseNameArabic] = useState("");
+  const [category, setCategory] = useState("");
+  const [level, setLevel] = useState("1");
+  const [totalHour, setTotalHour] = useState("");
+  const [totalDegree, setTotalDegree] = useState("");
+  const [lecturerId, setLecturerId] = useState("");
+
+  const handleAddCourse = async (e) => {
+    e.preventDefault();
+    console.log(courseId, courseName, courseNameArabic, category, level, totalHour, totalDegree, lecturerId)
+    try {
+      let res = await fetch("http://saasproject-001-site1.itempurl.com/api/Courses/CreateNewCourse", {
+        method: "POST",
+        body: JSON.stringify({
+          courseId: courseId,
+          title: courseName,
+          titleArb: courseNameArabic,
+          grade: totalDegree,
+          numOfHours: totalHour,
+          categoryId: category,
+          level: level,
+          instructorId: lecturerId,
+        }),
+        headers:{
+          Authorization : `Bearer ${userjwt}`,
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+        }
+      });
+      if (res.status === 200) {
+        setCourseId("");
+        setCourseName("");
+        setCourseNameArabic("");
+        setTotalDegree("");
+        setTotalHour("");
+        setCategory("");
+        setLevel("");
+        setLecturerId("")
+        alert("Advisor created successfully");
+      } else {
+        console.log("Some error occured");
+      }
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
+
   return (
     <div>
         <header>
@@ -35,13 +87,13 @@ export default function AddCourses() {
             <a href='admin.html'><i className="bi bi-arrow-left"></i> Add Course</a>
           <form action="" method="post">
             <label htmlFor="code">Enter course code:</label>
-            <input type="text" id="code" name="code" required />
+            <input value={courseId} onChange={(e) => setCourseId(e.target.value)} type="text" id="code" name="code" required />
             <label htmlFor="courseEnglish">Enter course name (English):</label>
-            <input type="text" id="courseEnglish" name="courseEnglish" required />
+            <input value={courseName} onChange={(e) => setCourseName(e.target.value)} type="text" id="courseEnglish" name="courseEnglish" required />
             <label htmlFor="nameArabic">Enter course name (Arabic):</label>
-            <input type="text" id="nameArabic" name="nameArabic" required />
+            <input value={courseNameArabic} onChange={(e) => setCourseNameArabic(e.target.value)} type="text" id="nameArabic" name="nameArabic" required />
             <label htmlFor="catCourse">choose the category of the course:</label>
-            <select name="catCourse" id="catCourse">
+            <select name="catCourse" id="catCourse" value={category} onChange={(e) => setCategory(e.target.value)}>
               <option value="SEN">SEN</option>
               <option value="CSC">CSC</option>
               <option value="ISC">ISC</option>
@@ -50,19 +102,19 @@ export default function AddCourses() {
               <option value="UNI">UNI</option>
             </select>
             <label htmlFor="levelCourse">choose the level of the course:</label>
-            <select name="levelCourse" id="levelCourse">
-              <option value="level1">Level 1</option>
-              <option value="level2">Level 2</option>
-              <option value="level3">Level 3</option>
-              <option value="level4">Level 4</option>
+            <select name="levelCourse" id="levelCourse" value={level} onChange={(e) => setLevel(e.target.value)}>
+              <option value="1">Level 1</option>
+              <option value="2">Level 2</option>
+              <option value="3">Level 3</option>
+              <option value="4">Level 4</option>
             </select>
             <label htmlFor="totalHour">Enter total hours of the course:</label>
-            <input type="number" id="totalHour" name="totalHour" />
+            <input value={totalHour} onChange={(e) => setTotalHour(e.target.value)} type="number" id="totalHour" name="totalHour" />
             <label htmlFor="totalDegree">Enter total degree of the course:</label>
-            <input type="text" id="totalDegree" name="totalDegree" required />
+            <input value={totalDegree} onChange={(e) => setTotalDegree(e.target.value)} type="number" id="totalDegree" name="totalDegree" required />
             <label htmlFor="lecturerId">Enter lecturer ID:</label>
-            <input type="text" id="lecturerId" name="lecturerId" required />
-            <button type="button" id="addcourses">Add</button>
+            <input value={lecturerId} onChange={(e) => setLecturerId(e.target.value)} type="text" id="lecturerId" name="lecturerId" required />
+            <button type="button" id="addcourses" onClick={handleAddCourse}>Add</button>
           </form>
           </div>
        </section>
