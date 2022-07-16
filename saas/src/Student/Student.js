@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
 import Profile from './Profile';
@@ -10,16 +10,14 @@ import Analysis from './Analysis';
 export default function Student() {
   return (
     <div>
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path='/home' exact element={<Home/>}/>
-                <Route path='/profile' exact element={<Profile/>}/>
-                <Route path='/calculator' exact element={<Calculator/>}/>
-                <Route path='/analysis' exact element={<Analysis/>}/>
-                <Route path='/infoApp' exact element={<Info/>}/>
-            </Routes>
-          </Router>
+        <Navbar />
+        <Routes>
+            <Route path='/home' exact element={<Home/>}/>
+            <Route path='/profile' exact element={<Profile/>}/>
+            <Route path='/calculator' exact element={<Calculator/>}/>
+            <Route path='/analysis' exact element={<Analysis/>}/>
+            <Route path='/infoApp' exact element={<Info/>}/>
+        </Routes>
     </div>
   )
 }

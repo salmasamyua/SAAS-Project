@@ -64,7 +64,7 @@ export default function AddCourses() {
         setCategory("");
         setLevel("");
         setLecturerId("")
-        alert("Advisor created successfully");
+        alert("Courses created successfully");
       } else {
         console.log("Some error occured");
       }
@@ -84,7 +84,7 @@ export default function AddCourses() {
        </header>
        <section id="addNewCourses">
         <div className='container'>
-            <a href='admin.html'><i className="bi bi-arrow-left"></i> Add Course</a>
+            <a href='/admin'><i className="bi bi-arrow-left"></i> Add Course</a>
           <form action="" method="post">
             <label htmlFor="code">Enter course code:</label>
             <input value={courseId} onChange={(e) => setCourseId(e.target.value)} type="text" id="code" name="code" required />

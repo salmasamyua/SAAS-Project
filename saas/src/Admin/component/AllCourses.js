@@ -32,7 +32,7 @@ export default function AllCourses() {
     </header>
     <section id='allCourses'>
     <div className='container'>
-            <a href='admin.html'><i className="bi bi-arrow-left"></i> The Courses</a>
+            <a href='/admin'><i className="bi bi-arrow-left"></i> The Courses</a>
             <div id="selectCourse">
             <label htmlFor="course">choose the category of the courses you want to list:</label>
             <select name="course" id="course">
@@ -51,8 +51,8 @@ export default function AllCourses() {
                 <p>Code: CSC101</p>
                 <p>Level: Level 1</p>
                 <p>Lecturer: Dr.Ahmed Fouad</p>
-                <button type="button" onclick="delete"><i className="bi bi-x-circle-fill"></i></button>
-                <button type="button" onclick="edit"><i className="bi bi-pencil-fill"></i></button>
+                <button type="button"><i className="bi bi-x-circle-fill"></i></button>
+                <button type="button"><i className="bi bi-pencil-fill"></i></button>
               </li>
             </ul>
           </div>

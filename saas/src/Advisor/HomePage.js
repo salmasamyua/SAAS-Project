@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './AdvisorCSS/advisor.css';
 import ShowCalculator from './components/ShowCalculator';
+import ShowClass from './components/ShowClass';
 import ShowPdf from './components/ShowPdf';
 
 export default function HomePage() {
@@ -15,12 +16,19 @@ export default function HomePage() {
       const handleCalculator = () => {
           setCalculator(current => !current);
       }
+      var [classSc, setClassSc] = useState(false);
+      const handleClassSchedule = () => {
+          setClassSc(current => !current);
+      }
       
       if(pdf){
           return <ShowPdf/>
       }
       else if(calculator){
           return <ShowCalculator/>
+      }
+      else if(classSc){
+          return <ShowClass/>
       }
       else{
         return (
@@ -35,14 +43,14 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="col-md-6 col-sm-12 colAdvisor1">
-                        <img className="float-end" src="Images/Software code testing-pana.png" alt="Software" />
+                        <img className="float-end" src="../Images/Software code testing-pana.png" alt="Software" />
                     </div>
                     </div>
                 </div>
                 </section>
                 <section className="secAdvisor1">
                 <div className="container">
-                    <div className="card1">
+                    <div className="card1" onClick={handleClassSchedule}>
                         <i className="bi bi-window-fullscreen"></i>
                         <h6>Class Schedule</h6>
                     </div>

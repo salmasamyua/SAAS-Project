@@ -1,26 +1,28 @@
 import React, { useEffect, useState,useRef } from 'react';
 import '../CSS/styleLogin.css';
-//import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-import PropTypes from 'prop-types';
+//import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import { useNavigate, useLocation } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
+//import PropTypes from 'prop-types';
 //import {Redirect} from "react-router-dom";
 
-async function loginUser(credentials) {
-    return fetch('http://saasproject-001-site1.itempurl.com/api/Acount/Login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
+// async function loginUser(credentials) {
+//     return fetch('http://saasproject-001-site1.itempurl.com/api/Acount/Login', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(credentials)
+//     })
+//       .then(data => data.json())
+//    }
 
-export default function Login({setToken}){
+export default function Login(){
 
     const [email, setEmail] = useState('');
     const handleEmail = (e) =>{
-        setEmail(e.target.value)
+        setEmail(e.target.value.toLowerCase())
     }
 
     const [password, setPassword] = useState('');
@@ -28,9 +30,12 @@ export default function Login({setToken}){
         setPassword(e.target.value)
     }
 
-    //const navigate = useNavigate();
-    //const history = useHistory();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
+    const { setAuth } = useAuth();
 
     useEffect(() => {
         document.title = 'SAAS | Login';
@@ -39,44 +44,73 @@ export default function Login({setToken}){
 
     const handleSubmit = async event => {
         event.preventDefault();
-
-
-        axios.post('http://saasproject-001-site1.itempurl.com/api/Acount/Login',{
-             email: email,
-             password: password
-         }).then(
-             result => {
-                 if(result.data.status === 'fail'){
-                    console.log(result.data.message);
-                 }
-                 else if(result.data.status === 'success'){
-                    result.data.userLogin.roles[0] = 'Student';
-                    if(result.data.userLogin.roles[0] === 'Student'){
-                        console.log('Hello ', result.data.userLogin.id);
-                        console.log(email, password, result.data.userLogin.roles[0]);
-                        //navigate('/student');
-                     }
-                     else if(result.data.userLogin.roles[0] === 'Instructor'){
-                         console.log('Hello', result.data.userLogin.id);
-                     }
-                     else if(result.data.userLogin.roles[0] === 'Coordinator'){
-                         console.log('Hello', result);
-                     }
-                     else {
-                         console.log(result.data.userLogin.roles[0])
-                     }
-                 }
+        try{
+            const result = await fetch('http://saasproject-001-site1.itempurl.com/api/Acount/Login', {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: email,
+              password: password
+            })
+          });
+            console.log(JSON.stringify(result?.data));
+            console.log(JSON.stringify(result));
+            if(result.data.states === 'success'){
+                const accessToken = result?.data?.token;
+                const roles = result?.data?.roles;
+                setAuth({ email, password, roles, accessToken });
+                navigate(from, { replace: true });
+            }
+            
+             if(result.data.status === 'fail'){
+                console.log(result.data.message);
              }
-         ).catch(
-             error => {
-                console.log("This Email or Password is not correct", error)
-             }
-         )
-        const token = await loginUser({
-            email,
-            password
-        });
-        setToken(token);
+        }
+        catch(error)
+             {
+               console.log("This Email or Password is not correct", error);
+            }
+        
+        
+        // axios.post('http://saasproject-001-site1.itempurl.com/api/Acount/Login',{
+        //     email: email,
+        //     password: password,
+        //     headers: { 'Content-Type': 'application/json' },
+        //     withCredentials: true
+            
+        //  })
+                
+                //  else if(result.data.status === 'success'){
+                //     if(result.data.userLogin.roles[0] === 'Student'){
+                //         console.log('Hello ', result.data.userLogin.id);
+                //         console.log(email, password, result.data.userLogin.roles[0]);
+                //         //navigate('/student');
+                //         window.location.assign("/student/home")
+                //         //return <Student/>
+                //      }
+                //      else if(result.data.userLogin.roles[0] === 'Instructor'){
+                //          console.log('Hello', result.data.userLogin.id);
+                //          window.location.assign("/advisor/homePage")
+                //         //return <Advisor/>
+                //      }
+                //      else if(result.data.userLogin.roles[0] === 'Coordinator'){
+                //          console.log('Hello', result);
+                //          window.location.assign("/admin")
+                //         //return <Admin/>
+                //      }
+                //      else {
+                //          console.log(result.data.userLogin.roles[0])
+                //      }
+                //  }
+            
+         
+        // const token = await loginUser({
+        //     email,
+        //     password
+        // });
+        // setToken(token);
     }
 
 
@@ -129,14 +163,14 @@ export default function Login({setToken}){
         <div className="row">
             <div className="colLogin1">
                 <h3>Log In</h3>
-                <form name="form" className="login" method="post" onClick={handleSubmit}>
+                <form name="form" className="login" method="post" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="email" className="label">Email</label>
-                        <input type="text" ref={userRef} autoComplete='off' value={email} onChange={handleEmail} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" name="email" placeholder="Enter your email.." required />
+                        <input type="text" ref={userRef} autoComplete='off' value={email} onChange={handleEmail} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" name="email" placeholder="Enter your email.." required="required"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password" className="label">Password</label>
-                        <input type="password" value={password} onChange={handlePassword} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="pass" name="password" placeholder="Enter your password.." required />
+                        <input type="password" value={password} onChange={handlePassword} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" id="pass" name="password" placeholder="Enter your password.." required="required"/>
                     </div>
                     <button type="submit">Log in</button>
                 </form>
@@ -189,6 +223,5 @@ export default function Login({setToken}){
 }
 
 
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-  };
+// Login.propTypes = {
+//     setToken: PropTypes.func.isrequired="required"//   };

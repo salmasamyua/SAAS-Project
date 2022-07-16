@@ -101,8 +101,9 @@ header #profile #profilePhoto {
   width: 200px;
   height: 200px;
   border-radius: 150px;
-  background-image: url(../../../public/Images/profilemale.jpg);
-  background-size: cover;
+  background-image: url(../../../public/Images/logo.png);
+  background-size: contain;
+  background-repeat: round;
 }
 
 header #profile h4 {

@@ -17,7 +17,7 @@ import '../CSS/styleInfo.css';
                     </div>
                     </div>
                     <div className="col-md-6 col-sm-12">
-                        <img src="Images/Onboarding-pana.png" alt="Welcome" />
+                        <img src="../Images/Onboarding-pana.png" alt="Welcome" />
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@ import '../CSS/styleInfo.css';
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
-                        <img src="Images/Pitch meeting-pana.png" alt="meeting-pana" />
+                        <img src="../Images/Pitch meeting-pana.png" alt="meeting-pana" />
                     </div>
                     <div className="col-md-6 col-sm-12 colInfo">
                         <div className="text">
@@ -49,7 +49,7 @@ import '../CSS/styleInfo.css';
                         </div>
                     </div>
                     <div className="col-md-6 col-sm-12">
-                        <img src="Images/Working-pana.png" alt="Working-pana" />
+                        <img src="../Images/Working-pana.png" alt="Working-pana" />
                     </div>
                 </div>
             </div>

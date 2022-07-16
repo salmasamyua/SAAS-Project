@@ -1,14 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import '../CSS/styleHome.css';
-import Setting from '../components/Setting';
+//import Setting from '../components/Setting';
 
 export default function Navbar() {
-      const [isShown, setIsShown] = useState(false);
-      const handleSetting = event => {
-          event.preventDefault();
-          setIsShown(current => !current);
-      }
+
+  const userjwt = localStorage['token'];
+  const [student, setStudent] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+    useEffect(() => {
+        fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
+          method: "Get",
+          headers:{
+            Authorization : `Bearer ${userjwt}`,
+             'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          }})
+          .then((response) => response.json())
+          .then((data) => {
+            setStudent(data)
+            if(student.gender === "Female"){
+                setProfilePic("../Images/profile.jpeg")
+            }
+            else{
+                setProfilePic("../Images/profilemale.jpg")
+            }
+          }
+          );
+      });
+    //   const [isShown, setIsShown] = useState(false);
+    //   const handleSetting = event => {
+    //       event.preventDefault();
+    //       setIsShown(current => !current);
+    //   }
     return (
       <div>
           <nav
@@ -17,7 +41,7 @@ export default function Navbar() {
         >
             <div className="container">
             <NavLink className="navbar-brand" to="/home"
-                ><img src="Images/logo.png" alt="SAAS Logo" />
+                ><img src="../Images/logo.png" alt="SAAS Logo" />
                 <h1>SAAS</h1>
             </NavLink>
             <button
@@ -35,14 +59,14 @@ export default function Navbar() {
             <div className="navbar-collapse collapse" id="navbarsExample05">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <NavLink className="nav-link" aria-current="page" to="/home"
+                    <NavLink className="nav-link" aria-current="page" to="/student/home"
                     >Home</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link" to="/calculator">Calculator</NavLink>
+                    <NavLink className="nav-link" to="/student/calculator">Calculator</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link" to="/analysis">Analysis</NavLink>
+                    <NavLink className="nav-link" to="/student/analysis">Analysis</NavLink>
                 </li>
                 <li className="nav-item dropdown">
                     <NavLink
@@ -51,18 +75,14 @@ export default function Navbar() {
                     to=" "
                     role="button"
                     aria-expanded="false"
-                    >Salma Samy
-                    <img src="Images/profile.jpeg" alt="Profile"
+                    >{student.name}
+                    <img src={profilePic} alt="Profile"
                     /></NavLink>
                     <ul className="dropdown-menu">
                     <li>
-                        <NavLink className="dropdown-item" to="/profile">Profile</NavLink>
+                        <NavLink className="dropdown-item" to="/student/profile">Profile</NavLink>
                     </li>
-                    <li>
-                        <NavLink className="dropdown-item" to="Arabic version//"
-                        >Language <button>العربية</button></NavLink>
-                    </li>
-                    <li>
+                    {/* <li>
                         <NavLink
                         className="dropdown-item"
                         to=' '
@@ -71,13 +91,13 @@ export default function Navbar() {
                         style={{width: 'auto'}}
                         >Setting</NavLink>
                         {isShown && <Setting/>}
-                    </li>
+                    </li> */}
                     <li>
-                        <NavLink className="dropdown-item" to="/infoApp">Info App</NavLink>
+                        <NavLink className="dropdown-item" to="/student/infoApp">Info App</NavLink>
                     </li>
                     <li><hr className="dropdown-divider" /></li>
                     <li>
-                        <NavLink className="dropdown-item" to="/"
+                        <NavLink className="dropdown-item" to="/login"
                         >Log out <i className="bi bi-box-arrow-right"></i
                         ></NavLink>
                     </li>

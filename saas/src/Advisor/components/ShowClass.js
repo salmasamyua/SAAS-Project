@@ -1,7 +1,7 @@
 import React from 'react';
 import '../AdvisorCSS/advisor.css';
 
-export default function ShowPdf() {
+export default function ShowClass() {
   return (
     <div className='advisor'>
         <section className="secAdvisor0">
@@ -19,12 +19,10 @@ export default function ShowPdf() {
               </div>
           </div>
         </section>
-        <section id='pdf'>
+        <section id='class'>
           <div className="container">
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe title='guidePdf' className="embed-responsive-item" src="../Images/guide.pdf" height='700' width='100%' allowFullScreen></iframe>
-            </div>
-            </div>
+                <p>You Don't Have any class schedule now</p> 
+          </div>
         </section>
         <section className='goBack'>
           <a href='/advisor/homePage'>Go Back</a>

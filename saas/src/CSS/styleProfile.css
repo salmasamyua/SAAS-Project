@@ -106,7 +106,6 @@ div .navbar .navbar-collapse .dropdown-menu a:hover, div .navbar .navbar-collaps
   width: 200px;
   height: 200px;
   border-radius: 150px;
-  background-image: url(../../public/Images/profile.jpeg);
   background-size: cover;
 }
 

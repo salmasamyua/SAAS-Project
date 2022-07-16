@@ -117,6 +117,7 @@
             grid-area: card6; 
             height: 150px;
            }
+           
     }
     .goBack{
         padding: 50px 0;
@@ -194,7 +195,15 @@
     }
 }
 
-#cal, #pdf{
+#cal, #pdf, #class{
     padding: 50px 0;
 }
 
+
+#class{
+ p{
+    padding-top: 50px;
+     text-align: center;
+     font-size: larger;
+ }
+}

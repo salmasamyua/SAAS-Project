@@ -8,8 +8,23 @@ import AddStudent from './component/AddStudent';
 import './CSS/admin.css';
 
 export default function Admin() {
+
+  const userjwt = localStorage['token'];
+  const [advisor, setAdvisor] = useState("");
     useEffect(() => {
         document.title = 'SAAS | Admin';
+        fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
+          method: "Get",
+          headers:{
+            Authorization : `Bearer ${userjwt}`,
+             'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          }})
+          .then((response) => response.json())
+          .then((data) => {
+            setAdvisor(data)
+          }
+          );
       });
       window.onscroll = function () {
         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -94,10 +109,11 @@ export default function Admin() {
               <header>
                   <a href='/admin' id="profile">
                       <div id="profilePhoto"></div>
-                      <h4 id="name">Mohamed Ahmed Ali</h4>
-                      <p id="email">MAA@ci.suez.edu.eg</p>
+                      <h4 id="name">{advisor.name}</h4>
+                      <p id="email">{advisor.email}</p>
                   </a>
               </header>
+              
 
               <section className="sec1">
                   <div className="container">
@@ -200,7 +216,7 @@ export default function Admin() {
 
               <section id="sec5">
                   <div className="container text-center">
-                      <a href="/"><i className="bi bi-box-arrow-right"></i> LOGOUT</a>
+                      <a href="/login"><i className="bi bi-box-arrow-right"></i> LOGOUT</a>
                   </div>
               </section>
           </div>

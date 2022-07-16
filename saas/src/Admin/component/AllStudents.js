@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {  useState } from 'react';
+
 import '../CSS/admin.css';
 
 export default function AllStudents() {
@@ -21,6 +22,36 @@ export default function AllStudents() {
       document.querySelector("#allStudent").style.marginTop = "-150px";
     }
   }; 
+
+  const userjwt = localStorage['token'];
+  //const [student, setStudent] = useState([]);
+  const [level, setLevel] = useState("1");
+  
+  const handleSubmit = () =>{
+  const formData = new FormData();
+  formData.append("level", "level")
+    fetch('http://saasproject-001-site1.itempurl.com/api/Users/GetAllAdvisor', {
+      method: "POST",
+      data: formData,
+      // body: JSON.stringify({
+      //   level: level
+      // }),
+    headers:{
+      Authorization : `Bearer ${userjwt}`,
+       'Accept': 'application/json',
+       'Content-Type': 'multipart/form-data'
+    }})
+    // .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      setLevel(data)
+      if(level !== null){
+        console.log(level)
+        document.querySelector("ul").style.display = "block";
+      }     
+    }
+    );
+  }
   return (
     <div>
         <header>
@@ -32,28 +63,30 @@ export default function AllStudents() {
         </header>
         <section id='allStudent'>
             <div className='container'>
-                <a href='admin.html'><i className="bi bi-arrow-left"></i> The Students</a>
+                <a href='/admin'><i className="bi bi-arrow-left"></i> The Students</a>
                 <div id="selectCourse">
                 <label htmlFor="studentLevel">choose the level of the students you want to list:</label>
-                <select name="studentLevel" id="studentLevel">
-                    <option value="level1">Level 1</option>
-                    <option value="level2">Level 2</option>
-                    <option value="level3">Level 3</option>
-                    <option value="level4">Level 4</option>
+                <select name="studentLevel" id="studentLevel" value={level} onChange={(e) => setLevel(e.target.value)}>
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
+                    <option value="4">Level 4</option>
                 </select>
-                <button type="button"> List</button>
+                <button type="button" onClick={handleSubmit}> List</button>
                 </div>
-                <ul id="student">
-                  <li>
-                    <h6>Kholoud Mahmoud</h6>
-                    <p>ID: 200003344332221</p>
-                    <p>Level: 2</p>
-                    <p>Email: Kholoudmahmoud@gmail.com</p>
-                    <p>Phone: 0112345567</p>
+                <ul id="student" style={{display: "none"}}>
+                {/* {level && level.map(level => (
+                    <li key={level.id}>
+                    <h6>{level.fullName}</h6>
+                    <p>{level.id}</p>
+                    <p>{level.level}</p>
+                    <p>{level.email}</p>
+                    <p>{level.phone}</p>
                     <a href=" " >View degrees </a>
-                    <button type="button" onclick="delete"><i className="bi bi-x-circle-fill"></i></button>
-                    <button type="button" onclick="edit"><i className="bi bi-pencil-fill"></i></button>
+                    <button type="button" ><i className="bi bi-x-circle-fill"></i></button>
+                    <button type="button" ><i className="bi bi-pencil-fill"></i></button>
                   </li>
+                ))} */}
                 </ul>
               </div>
         </section>

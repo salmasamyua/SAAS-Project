@@ -119,7 +119,7 @@ export default function AddStudent() {
         setEmailConfirmed('');
         setPassword("");
         setPasswordConfirmed('');
-        alert("Advisor created successfully");
+        alert("Student created successfully");
       } else {
         console.log("Some error occured");
       }
@@ -178,11 +178,18 @@ export default function AddStudent() {
                   <option value="2">Semester 2</option>
                   <option value="3">Semester 3</option>
                   <option value="4">Semester 4</option>
+                  <option value="5">Semester 5</option>
+                  <option value="6">Semester 6</option>
+                  <option value="7">Semester 7</option>
+                  <option value="8">Semester 8</option>
                 </select>
                 <label htmlFor="depart">Choose the department of the student:</label>
                 <select value={department} onChange={(e) => setDepartment(e.target.value)} name="depart" id="depart" required>
                   <option value="SWE">SWE</option>
-                  <option value="Semester 2">Semester 2</option>
+                  <option value="BIO">BIO</option>
+                  <option value="CS">CS</option>
+                  <option value="IS">IS</option>
+                  <option value="IT">IT</option>
                 </select>
                 <label htmlFor="emailStudent">Enter student e-mail:</label>
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id="emailStudent" name="emailStudent" required />

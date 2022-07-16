@@ -1,9 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../CSS/styleProfile.css';
 
  function Profile() {
+    const userjwt = localStorage['token'];
+    const [profile, setProfile] = useState("");
+    const [profilePic, setProfilePic] = useState("");
   useEffect(() => {
     document.title = 'SAAS | Profile';
+    fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
+        method: "Get",
+        headers:{
+          Authorization : `Bearer ${userjwt}`,
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+        }})
+        .then((response) => response.json())
+        .then((data) => {
+          setProfile(data)
+          if(profile.gender === "Female"){
+            setProfilePic("../Images/profile.jpeg")
+        }
+        else{
+            setProfilePic("../Images/profilemale.jpg")
+        }
+        }
+        );
   });
     return (
       <div>
@@ -11,9 +32,9 @@ import '../CSS/styleProfile.css';
           <div className="row">
               <div className="col-xl-3 col-sm-12">
                   <div className="colProfile0">
-                      <div className="profile"></div>
-                  <h4>Salma Samy Mansour</h4>
-                  <p>UGS.140537@ci.suez.edu.eg</p>
+                      <div className="profile" style={{backgroundImage: `url('${profilePic}')`}}></div>
+                  <h4>{profile.name}</h4>
+                  <p>{profile.email}</p>
                   </div>
               </div>
               <div className="col-xl-8 col-md-10 col-sm-11 colProfile1">
@@ -30,35 +51,35 @@ import '../CSS/styleProfile.css';
                             <tbody>
                             <tr>
                                 <th>Name</th>
-                                <td>Salma Samy Mansour Ali</td>
+                                <td>{profile.name}</td>
                             </tr>
                             <tr>
                                 <th>Name - Arabic</th>
-                                <td>سلمى سامي منصور علي</td>
+                                <td>{profile.nameArb}</td>
                             </tr>
                             <tr>
                                 <th>National ID</th>
-                                <td>30008161301464</td>
+                                <td>{profile.id}</td>
                             </tr>
                             <tr>
                                 <th>Gender</th>
-                                <td>Female</td>
+                                <td>{profile.gender}</td>
                             </tr>
                             <tr>
                                 <th>Birthday</th>
-                                <td>16\8\2000</td>
+                                <td>{profile.brithOfdate}</td>
                             </tr>
                             <tr>
                                 <th>Acceptence Year</th>
-                                <td>2018 - 2019</td>
+                                <td>{profile.acceptenceYear}</td>
                             </tr>
                             <tr>
                                 <th>Level</th>
-                                <td>Fourth</td>
+                                <td>{profile.level}</td>
                             </tr>
                             <tr>
                                 <th>Department</th>
-                                <td>Computer Science</td>
+                                <td>{profile.department}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -77,21 +98,57 @@ import '../CSS/styleProfile.css';
                                 <tbody>
                                 <tr>
                                     <th>City</th>
-                                    <td>Sharqia</td>
+                                    <td>{profile.city}</td>
                                 </tr>
                                 <tr>
                                     <th>Address</th>
-                                    <td>Abu Kabir</td>
+                                    <td>{profile.address}</td>
                                 </tr>
                                 <tr>
                                     <th>Mobile</th>
-                                    <td>01145735097</td>
+                                    <td>{profile.phoneNumber}</td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
-                                    <td>salmasamymansour0@gmail.com</td>
+                                    <td>{profile.email}</td>
                                 </tr>
                                 </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingThree">
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Previous Qualification
+                    </button>
+                    </h2>
+                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div className="accordion-body">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Previous Qualification</th>
+                                        <td>{profile.previousqualification}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Institute</th>
+                                        <td>{profile.institute}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Expected Gradution Year</th>
+                                        <td>{profile.graduationYear}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td>{profile.total}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Percentage</th>
+                                        <td>{profile.percentage}</td>
+                                    </tr>
+                                </tbody>
+                                
                             </table>
                         </div>
                     </div>

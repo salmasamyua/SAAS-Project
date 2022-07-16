@@ -14,7 +14,7 @@ export default function ShowCalculator() {
                   </div>
               </div>
               <div className="col-md-6 col-sm-12 colAdvisor1">
-                  <img className="float-end" src="Images/Software code testing-pana.png" alt="Software" />
+                  <img className="float-end" src="../Images/Software code testing-pana.png" alt="Software" />
               </div>
               </div>
           </div>
@@ -26,7 +26,7 @@ export default function ShowCalculator() {
             </div>
         </section>
         <section className='goBack'>
-          <a href='/homePage'>Go Back</a>
+          <a href='/advisor/homePage'>Go Back</a>
         </section>
     </div>
   )

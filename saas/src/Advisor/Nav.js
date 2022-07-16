@@ -1,32 +1,55 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
-import Setting from '../components/Setting';
+//import Setting from '../components/Setting';
 import './AdvisorCSS/advisor.css';
 
  function Nav() {
-  const [isShown, setIsShown] = useState(false);
-  const handleSetting = event => {
-      event.preventDefault();
-      setIsShown(current => !current);
-  }
+  const userjwt = localStorage['token'];
+  const [advisor, setAdvisor] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+    useEffect(() => {
+        fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
+          method: "Get",
+          headers:{
+            Authorization : `Bearer ${userjwt}`,
+             'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          }})
+          .then((response) => response.json())
+          .then((data) => {
+            setAdvisor(data)
+            if(advisor.gender === "female"){
+                setProfilePic("../Images/profile.jpeg")
+            }
+            else{
+                setProfilePic("../Images/profilemale.jpg")
+            }
+          }
+          );
+      });
+  // const [isShown, setIsShown] = useState(false);
+  // const handleSetting = event => {
+  //     event.preventDefault();
+  //     setIsShown(current => !current);
+  // }
   return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Fifth navbar example">
             <div className="container">
-              <NavLink className="navbar-brand" to="/homePage"><h1>Hi, Ahmed Foad</h1></NavLink>
+              <NavLink className="navbar-brand" to="/advisor/homePage"><h1>Hi, {advisor.name}</h1></NavLink>
                 <div className="flex-shrink-0 dropdown">
-                  <NavLink className="nav-link dropdown-toggle" data-bs-toggle="dropdown" to="#" role="button" aria-expanded="false">Ahmed Foad 
-                  <img src="Images/profilemale.jpg" alt="Profile Pic"/></NavLink>
+                  <NavLink className="nav-link dropdown-toggle" data-bs-toggle="dropdown" to="#" role="button" aria-expanded="false">{advisor.name}
+                  <img src={profilePic} alt="Profile Pic"/></NavLink>
                   <ul className="dropdown-menu">
-                    <li><NavLink className="dropdown-item" to="/ProfileAdvisor">Profile</NavLink></li>
-                    <li>
+                    <li><NavLink className="dropdown-item" to="/advisor/profileAdvisor">Profile</NavLink></li>
+                    {/* <li>
                       <NavLink data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleSetting} className="dropdown-item" to=" ">
                         Setting</NavLink>
                       {isShown && <Setting/>}
-                    </li>
-                    <li><NavLink className="dropdown-item" to="/infoApp">Info App</NavLink></li>
+                    </li> */}
+                    <li><NavLink className="dropdown-item" to="/advisor/infoApp">Info App</NavLink></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><NavLink className="dropdown-item" to="/">Log out <i className="bi bi-box-arrow-right"></i></NavLink></li>
+                    <li><NavLink className="dropdown-item" to="/login">Log out <i className="bi bi-box-arrow-right"></i></NavLink></li>
                   </ul>
                 </div>
             </div>

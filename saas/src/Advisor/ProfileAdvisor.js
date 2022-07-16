@@ -1,19 +1,40 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import './AdvisorCSS/styleProfile.css'
 
 export default function ProfileAdvisor() {
-    useEffect(() => {
-        document.title = 'SAAS | Profile';
-      });
+    const userjwt = localStorage['token'];
+    const [profile, setProfile] = useState("");
+    const [profilePic, setProfilePic] = useState("");
+  useEffect(() => {
+    document.title = 'SAAS | Profile';
+    fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
+        method: "Get",
+        headers:{
+          Authorization : `Bearer ${userjwt}`,
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+        }})
+        .then((response) => response.json())
+        .then((data) => {
+          setProfile(data)
+          if(profile.gender === "female"){
+            setProfilePic("../Images/profile.jpeg")
+        }
+        else{
+            setProfilePic("../Images/profilemale.jpg")
+        }
+        }
+        );
+  });
   return (
     <div>
         <section className='sectionProfile'>
             <div className="row">
                 <div className="col-xl-3 col-sm-12">
                     <div className="colAdvisor0">
-                        <div className="profileAdvisor"></div>
-                    <h4>Ahmed Foad Mohamed</h4>
-                    <p>af@ci.suez.edu.eg</p>
+                        <div className="profileAdvisor" style={{backgroundImage: `url('${profilePic}')`}}></div>
+                    <h4>{profile.name}</h4>
+                    <p>{profile.email}</p>
                     </div>
                 </div>
                 <div className="col-xl-8 col-md-10 col-sm-11 colAdvisor1">
@@ -30,23 +51,23 @@ export default function ProfileAdvisor() {
                             <tbody>
                                 <tr>
                                 <th>Name</th>
-                                <td>Ahmed Foad Mohamed</td>
+                                <td>{profile.name}</td>
                                 </tr>
                                 <tr>
                                     <th>Name - Arabic</th>
-                                    <td>احمد فؤاد محمد</td>
+                                    <td>{profile.nameArb}</td>
                                 </tr>
                                 <tr>
                                     <th>National ID</th>
-                                    <td>12345678901234</td>
+                                    <td>{profile.id}</td>
                                 </tr>
                                 <tr>
                                     <th>Gender</th>
-                                    <td>Male</td>
+                                    <td>{profile.gender}</td>
                                 </tr>
                                 <tr>
                                     <th>Birthday</th>
-                                    <td>10\5\1975</td>
+                                    <td>{profile.brithOfdate}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -65,19 +86,19 @@ export default function ProfileAdvisor() {
                                 <tbody>
                                     <tr>
                                         <th>City</th>
-                                        <td>Ismailia</td>
+                                        <td>{profile.city}</td>
                                     </tr>
                                     <tr>
                                         <th>Address</th>
-                                        <td>Al-Ashrini</td>
+                                        <td>{profile.address}</td>
                                     </tr>
                                     <tr>
                                         <th>Mobile</th>
-                                        <td>01112345678</td>
+                                        <td>{profile.phoneNumber}</td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
-                                        <td>ahmedfoad@gmail.com</td>
+                                        <td>{profile.email}</td>
                                     </tr>
                                 </tbody>
                             </table>
