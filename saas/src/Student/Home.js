@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/styleHome.css';
+import Navbar from './Navbar';
 // import Chart from 'chart.js/auto';
 // import {Line} from 'react-chartjs-2';
 // import {CategoryScale} from 'chart.js'; 
@@ -62,6 +63,26 @@ import '../CSS/styleHome.css';
             //   }
             //   );
       });
+    const handleControl = (e) => {
+      e.preventDefault();
+      fetch('http://saasproject-001-site1.itempurl.com/api/RecCourses/IsCheckControll', {
+        method: "Get",
+        headers:{
+          Authorization : `Bearer ${userjwt}`,
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+        }})
+        .then((response) => response.json())
+        .then((data) => {
+          if(data === true){
+              document.querySelector('#modal').style.display = "block"
+          }else{
+            alert("Recommendation System is not available at the moment.")
+          }
+          //console.log(data)
+        }
+        );
+    }
       // const state = {
       //   labels: [semseter.semseterName],
       //   datasets: [
@@ -100,6 +121,7 @@ import '../CSS/styleHome.css';
       // }
     return (
       <div>
+        <Navbar/>
           <section className="sectionHome0">
           <div className="container">
             <div className="row">
@@ -176,7 +198,31 @@ import '../CSS/styleHome.css';
           <div className="container">
             <h3>Recommended Courses</h3>
             <div className="reco">
-              <a href="/profile">Start Recommendation</a>
+              <a href=" " onClick={handleControl}>Start Recommendation</a>
+              <div id="modal" style={{display: "none"}}>
+              <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Start
+              </button>
+
+              
+              <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="staticBackdropLabel">Recommended Courses</h5>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        your Courses :
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" className="btn btn-primary">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
             </div>
           </div>
         </section>

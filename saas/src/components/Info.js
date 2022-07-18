@@ -1,5 +1,9 @@
 import React, {useEffect} from 'react';
 import '../CSS/styleInfo.css';
+import Navbar from '../Student/Navbar';
+import Nav from '../Advisor/Nav';
+
+const role = localStorage["role"]
 
  function Info() {
     useEffect(() => {
@@ -7,6 +11,9 @@ import '../CSS/styleInfo.css';
       });
   return (
     <div>
+        {
+            role === "Student" ? <Navbar/> : <Nav/>
+        }
         <section className='info'>
             <div className="container">
                 <div className="row">

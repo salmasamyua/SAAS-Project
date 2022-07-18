@@ -6,9 +6,16 @@ import '../CSS/styleHome.css';
 export default function Navbar() {
 
   const userjwt = localStorage['token'];
+  const gender = localStorage['gender'];
   const [student, setStudent] = useState("");
   const [profilePic, setProfilePic] = useState("");
     useEffect(() => {
+        if(gender === "Female"){
+            setProfilePic("../Images/profile.jpeg")
+        }
+        else{
+            setProfilePic("../Images/profilemale.jpg")
+        }
         fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
           method: "Get",
           headers:{
@@ -19,15 +26,9 @@ export default function Navbar() {
           .then((response) => response.json())
           .then((data) => {
             setStudent(data)
-            if(student.gender === "Female"){
-                setProfilePic("../Images/profile.jpeg")
-            }
-            else{
-                setProfilePic("../Images/profilemale.jpg")
-            }
           }
           );
-      });
+      }, [gender, userjwt] );
     //   const [isShown, setIsShown] = useState(false);
     //   const handleSetting = event => {
     //       event.preventDefault();
@@ -59,14 +60,14 @@ export default function Navbar() {
             <div className="navbar-collapse collapse" id="navbarsExample05">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                    <NavLink className="nav-link" aria-current="page" to="/student/home"
+                    <NavLink className="nav-link" aria-current="page" to="/home"
                     >Home</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link" to="/student/calculator">Calculator</NavLink>
+                    <NavLink className="nav-link" to="/calculator">Calculator</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link" to="/student/analysis">Analysis</NavLink>
+                    <NavLink className="nav-link" to="/analysis">Analysis</NavLink>
                 </li>
                 <li className="nav-item dropdown">
                     <NavLink
@@ -80,7 +81,7 @@ export default function Navbar() {
                     /></NavLink>
                     <ul className="dropdown-menu">
                     <li>
-                        <NavLink className="dropdown-item" to="/student/profile">Profile</NavLink>
+                        <NavLink className="dropdown-item" to="/profile">Profile</NavLink>
                     </li>
                     {/* <li>
                         <NavLink
@@ -93,7 +94,7 @@ export default function Navbar() {
                         {isShown && <Setting/>}
                     </li> */}
                     <li>
-                        <NavLink className="dropdown-item" to="/student/infoApp">Info App</NavLink>
+                        <NavLink className="dropdown-item" to="/infoApp">Info App</NavLink>
                     </li>
                     <li><hr className="dropdown-divider" /></li>
                     <li>

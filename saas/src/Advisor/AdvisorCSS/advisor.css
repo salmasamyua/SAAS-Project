@@ -17,7 +17,7 @@
 }
 
 .navbar .dropdown a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.55) !important;
 }
 
 .navbar .dropdown a img {
@@ -50,7 +50,7 @@
 
 .navbar .dropdown .dropdown-menu a:hover, .navbar .dropdown .dropdown-menu .active {
   background-color: #AAC9D3;
-  color: #064B68;
+  color: #064B68 !important;
 }
 
 .advisor {
@@ -285,5 +285,81 @@
   padding-top: 50px;
   text-align: center;
   font-size: larger;
+}
+
+#students #select {
+  margin: 30px 0 0 40px;
+  padding: 20px 40px 30px 40px;
+  background-color: #ffffff;
+}
+
+#students #select label {
+  font-size: 20px;
+  color: #064B68;
+}
+
+#students #select select {
+  display: block;
+  margin: 5px 0 10px 0;
+  border-radius: 30px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #064B68;
+  background-color: rgba(233, 231, 231, 0.842);
+}
+
+#students #select button {
+  background-color: #064B68;
+  color: #ffffff;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 40px;
+  margin: 20px 0;
+  font-size: 25px;
+}
+
+#students #student {
+  margin: 50px 10px;
+}
+
+#students #student li {
+  list-style-type: none;
+  background-color: white;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+#students #student li h6 {
+  color: #064B68;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+#students #student li p {
+  line-height: 0.5;
+  margin-left: 10px;
+}
+
+#students #student li #modal {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#students #student li #modal .btn {
+  background-color: #AAC9D3;
+  font-size: 22px;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-weight: 700;
+}
+
+#students #student li #modal .btn:hover {
+  color: #064B68;
+  background-color: #ffffff;
+}
+
+#students #student li #modal .modal-body {
+  text-align: left;
 }
 /*# sourceMappingURL=advisor.css.map */

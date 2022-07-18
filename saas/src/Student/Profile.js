@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/styleProfile.css';
+import Navbar from './Navbar';
 
  function Profile() {
     const userjwt = localStorage['token'];
+    const gender = localStorage['gender'];
     const [profile, setProfile] = useState("");
     const [profilePic, setProfilePic] = useState("");
   useEffect(() => {
     document.title = 'SAAS | Profile';
+        if(gender === "Female"){
+            setProfilePic("../Images/profile.jpeg")
+        }
+        else{
+            setProfilePic("../Images/profilemale.jpg")
+        }
     fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
         method: "Get",
         headers:{
@@ -17,17 +25,12 @@ import '../CSS/styleProfile.css';
         .then((response) => response.json())
         .then((data) => {
           setProfile(data)
-          if(profile.gender === "Female"){
-            setProfilePic("../Images/profile.jpeg")
-        }
-        else{
-            setProfilePic("../Images/profilemale.jpg")
-        }
         }
         );
-  });
+  }, [gender, userjwt] );
     return (
       <div>
+        <Navbar/>
           <section className='sectionProfile'>
           <div className="row">
               <div className="col-xl-3 col-sm-12">

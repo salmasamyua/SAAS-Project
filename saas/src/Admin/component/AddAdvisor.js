@@ -1,33 +1,15 @@
 import React, {useState} from 'react';
-import "../CSS/admin.css";
+import "../CSS/component.css";
 
 
 export default function AddAdvisor() {
-  window.onscroll = function () {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.querySelector("#name").style.display = "none";
-      document.querySelector("#email").style.display = "none";
-      document.querySelector("#profile").style.cssText = `
-                padding: 10px;
-                height: 100px;
-                background-image: none;
-                background-color: #064B68;
-                z-index: 2;
-                `;
-      document.querySelector("#profilePhoto").style.cssText = `
-                width: 70px;
-                height: 70px; 
-                `;
-      document.querySelector("header").style.marginBottom = "150px";
-      document.querySelector("#add").style.marginTop = "-150px";
-    }
-  }; 
+
   const userjwt = localStorage['token'];
   
     const [SSN, setSSN] = useState("");
     const [name, setName] = useState("");
     const [nameArabic, setNameArabic] = useState("");
-    const [gender, setGender] = useState("");
+    const [gender, setGender] = useState("male");
     const [birthday, setBirthday] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [level, setLevel] = useState("1");
@@ -40,7 +22,7 @@ export default function AddAdvisor() {
   
     const handleAddAdvisor = async (e) => {
       e.preventDefault();
-      console.log(SSN, name, nameArabic, gender, birthday, phoneNumber, level, email, emailConfirmed, password, passwordConfirmed)
+      //console.log(SSN, name, nameArabic, gender, birthday, phoneNumber, level, email, emailConfirmed, password, passwordConfirmed)
       try {
         let res = await fetch("http://saasproject-001-site1.itempurl.com/api/Users/CreateAdvisor", {
           method: "POST",
@@ -58,17 +40,6 @@ export default function AddAdvisor() {
             passwordConfirmed: passwordConfirmed,
             phoneNumber: phoneNumber,
             ssn: SSN
-            // brithOfdate: "2021-01-29",
-            // email: "salmasloma33@gmail.com",
-            // emailConfirmed: "salmasloma33@gmail.com",
-            // gender: "female",
-            // level: "1",
-            // name: "salma",
-            // nameArb: "سلمى",
-            // password: "11Salma00@",
-            // passwordConfirmed: "11Salma00@",
-            // phoneNumber: "01123445677",
-            // ssn: "30004140300228"
           }),
           headers:{
             Authorization : `Bearer ${userjwt}`,
@@ -77,22 +48,9 @@ export default function AddAdvisor() {
           }
         });
         if (res.status === 200) {
-          setSSN("");
-          setName("");
-          setNameArabic("");
-          setGender("");
-          setBirthday("");
-          setPhoneNumber("");
-          setLevel("");
-          setCity("");
-          setAddress("");
-          setEmail("");
-          setEmailConfirmed('');
-          setPassword("");
-          setPasswordConfirmed('');
           alert("Advisor created successfully");
         } else if(res.status === 400){
-          alert("One or more validation errors occurred." );
+          alert("One or more validation errors occurred.");
         }
         else {
           console.log("Some error occured", res);
@@ -104,17 +62,13 @@ export default function AddAdvisor() {
     
   return (
     <div>
-        <header>
-           <a href='/admin' id="profile">
-               <div id="profilePhoto"></div>
-               <h4 id="name">Mohamed Ahmed Ali</h4>
-               <p id="email">MAA@ci.suez.edu.eg</p>
-           </a>
-       </header>
+        <a href='/admin' id="profileHeader">
+            <div id="profile"></div>
+        </a>
         <section id='add'>
         <div className='container'>
                 <a href='/admin'><i className="bi bi-arrow-left"></i> Add Advisor</a>
-                <form>
+                <form  onSubmit={handleAddAdvisor}>
                   <label htmlFor="SSN">Enter advisor SSN:</label>
                   <input value={SSN} onChange={(e) => setSSN(e.target.value)} maxLength='14' type="text" id="SSN" name="SSN" required />
                   <label htmlFor="nameEnglish">Enter advisor name (English):</label>
@@ -149,7 +103,7 @@ export default function AddAdvisor() {
                   <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" required />
                   <label htmlFor="password">Enter temporary password confirme:</label>
                   <input value={passwordConfirmed} onChange={(e) => setPasswordConfirmed(e.target.value)} type="password" id="passwordConfirmed" name="passwordConfirmed" required />
-                  <button type="button" id="addbtn" onClick={handleAddAdvisor}>Add</button>
+                  <button type="button" id="addbtn">Add</button>
                 </form>
          </div>
         </section>

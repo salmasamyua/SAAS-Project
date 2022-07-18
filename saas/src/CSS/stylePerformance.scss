@@ -51,17 +51,17 @@
         font-size: 15px;
     }
     .bar-5 {
-        width: 75%; 
+        width: 55%; 
         background-color: #04AA6D;
     }
-    .bar-4 {
-        width: 85%; 
-        background-color: #2196F3;
-    }
-    .bar-3 {
-        width: 70%; 
-        background-color: #00bcd4;
-    }
+    // .bar-4 {
+    //     width: 85%; 
+    //     background-color: #2196F3;
+    // }
+    // .bar-3 {
+    //     width: 70%; 
+    //     background-color: #00bcd4;
+    // }
     .bar-container, .bar-5, .bar-4, .bar-3{
         border-radius: 10px;
         height: 20px; 
@@ -80,6 +80,10 @@
         b{
             float: right;
         }
+    }
+    #message{
+        text-align: center;
+        font-size: larger;
     }
 }
 

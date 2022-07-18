@@ -1,41 +1,43 @@
-import React from 'react';
-import '../CSS/admin.css';
+import React, {useState} from 'react';
+import "../CSS/component.css";
+import axios from 'axios';
 
 export default function AllCourses() {
-  window.onscroll = function () {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.querySelector("#name").style.display = "none";
-      document.querySelector("#email").style.display = "none";
-      document.querySelector("#profile").style.cssText = `
-                padding: 10px;
-                height: 100px;
-                background-image: none;
-                background-color: #064B68;
-                z-index: 2;
-                `;
-      document.querySelector("#profilePhoto").style.cssText = `
-                width: 70px;
-                height: 70px; 
-                `;
-      document.querySelector("header").style.marginBottom = "150px";
-      document.querySelector("#allCourses").style.marginTop = "-150px";
-    }
-  }; 
+
+  const userjwt = localStorage['token'];
+  const [courses, setCourses] = useState([]);
+  const [category, setCategory] = useState("SEN");
+  
+  const handleSubmit = () =>{
+    axios({
+      method: "POST",
+      url: "http://saasproject-001-site1.itempurl.com/api/Courses/GetAllCourses",
+      data: {
+        categoryid: category,
+      },
+      headers: {
+        Authorization: `Bearer ${userjwt}`,
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+      },
+    })
+      .then((res) => {
+        setCourses(res.data);
+        document.querySelector("ul").style.display = "block";
+      })
+      .catch((err) => console.log(err.response));
+  }
   return (
     <div>
-    <header>
-      <a href='/admin' id="profile">
-          <div id="profilePhoto"></div>
-          <h4 id="name">Mohamed Ahmed Ali</h4>
-          <p id="email">MAA@ci.suez.edu.eg</p>
-      </a>
-    </header>
+        <a href='/admin' id="profileHeader">
+          <div id="profile"></div>
+        </a>
     <section id='allCourses'>
     <div className='container'>
             <a href='/admin'><i className="bi bi-arrow-left"></i> The Courses</a>
             <div id="selectCourse">
             <label htmlFor="course">choose the category of the courses you want to list:</label>
-            <select name="course" id="course">
+            <select name="course" id="course" value={category} onChange={e => setCategory(e.target.value)}>
               <option value="SEN">SEN</option>
               <option value="CSC">CSC</option>
               <option value="ISC">ISC</option>
@@ -43,17 +45,19 @@ export default function AllCourses() {
               <option value="GEN">GEN</option>
               <option value="UNI">UNI</option>
             </select>
-            <button type="button"> List</button>
+            <button type="button" onClick={handleSubmit}> List</button>
             </div>
             <ul id="courses">
-              <li>
-                <h6>Introduction to Computer Science</h6>
-                <p>Code: CSC101</p>
-                <p>Level: Level 1</p>
-                <p>Lecturer: Dr.Ahmed Fouad</p>
-                <button type="button"><i className="bi bi-x-circle-fill"></i></button>
-                <button type="button"><i className="bi bi-pencil-fill"></i></button>
-              </li>
+              {courses ? (
+                courses.map(course =>(
+                  <li key={course.courseCode}>
+                  <h6>{course.courseName}</h6>
+                  <p>{course.courseCode}</p>
+                  <p>{course.level}</p>
+                  <p>{course.instructorName}</p>
+                </li>
+                ))
+              ) : <li>There are no courses in this category</li> }
             </ul>
           </div>
     </section>

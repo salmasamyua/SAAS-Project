@@ -18,7 +18,7 @@ $mainFont: 'Lato', sans-serif;
         .dropdown{
             flex-grow: 0 !important;
             a{
-                color: $white;
+                color: rgba(255, 255, 255, 0.55) !important;
                 img{
                     width: 22px;
                     border-radius: 20px;
@@ -44,7 +44,7 @@ $mainFont: 'Lato', sans-serif;
                 }
                 a:hover, .active{
                     background-color: $seconderyColor;
-                    color: $mainColor;
+                    color: $mainColor !important;
                 }
             }
         }

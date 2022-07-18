@@ -1,9 +1,11 @@
 import React from 'react';
 import '../AdvisorCSS/advisor.css';
+import Nav from '../Nav';
 
 export default function ShowClass() {
   return (
     <div className='advisor'>
+      <Nav/>
         <section className="secAdvisor0">
           <div className="container">
               <div className="row">
@@ -25,7 +27,7 @@ export default function ShowClass() {
           </div>
         </section>
         <section className='goBack'>
-          <a href='/advisor/homePage'>Go Back</a>
+          <a href='/homePage'>Go Back</a>
         </section>
     </div>
   )

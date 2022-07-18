@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../CSS/stylePerformance.css';
+import Navbar from './Navbar';
 
  function Calculator() { 
     useEffect(() => {
@@ -8,6 +9,7 @@ import '../CSS/stylePerformance.css';
       });
     return (
       <div>
+        <Navbar/>
         <section className="secAnaysis1">
             <h2><NavLink to="/">Home </NavLink><p> { " >> " } Calculator</p></h2>
         </section>

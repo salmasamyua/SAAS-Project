@@ -1,33 +1,15 @@
+import axios from 'axios';
 import React, {useState} from 'react';
-import '../CSS/admin.css';
+import "../CSS/component.css";
 
 export default function AddCourses() {
-  window.onscroll = function () {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.querySelector("#name").style.display = "none";
-      document.querySelector("#email").style.display = "none";
-      document.querySelector("#profile").style.cssText = `
-                padding: 10px;
-                height: 100px;
-                background-image: none;
-                background-color: #064B68;
-                z-index: 2;
-                `;
-      document.querySelector("#profilePhoto").style.cssText = `
-                width: 70px;
-                height: 70px; 
-                `;
-      document.querySelector("header").style.marginBottom = "150px";
-      document.querySelector("#addNewCourses").style.marginTop = "-150px";
-    }
-  }; 
 
   const userjwt = localStorage['token'];
   
   const [courseId, setCourseId] = useState("");
   const [courseName, setCourseName] = useState("");
   const [courseNameArabic, setCourseNameArabic] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("SEN");
   const [level, setLevel] = useState("1");
   const [totalHour, setTotalHour] = useState("");
   const [totalDegree, setTotalDegree] = useState("");
@@ -35,11 +17,11 @@ export default function AddCourses() {
 
   const handleAddCourse = async (e) => {
     e.preventDefault();
-    console.log(courseId, courseName, courseNameArabic, category, level, totalHour, totalDegree, lecturerId)
-    try {
-      let res = await fetch("http://saasproject-001-site1.itempurl.com/api/Courses/CreateNewCourse", {
-        method: "POST",
-        body: JSON.stringify({
+    //console.log(courseId, courseName, courseNameArabic, category, level, totalHour, totalDegree, lecturerId)
+    axios({
+      method: "POST",
+      url: "http://saasproject-001-site1.itempurl.com/api/Courses/CreateNewCourse",
+      data: {
           courseId: courseId,
           title: courseName,
           titleArb: courseNameArabic,
@@ -48,40 +30,25 @@ export default function AddCourses() {
           categoryId: category,
           level: level,
           instructorId: lecturerId,
-        }),
-        headers:{
+      },headers: {
           Authorization : `Bearer ${userjwt}`,
            'Accept': 'application/json',
            'Content-Type': 'application/json'
-        }
-      });
+      }
+    }).then(res => {
       if (res.status === 200) {
-        setCourseId("");
-        setCourseName("");
-        setCourseNameArabic("");
-        setTotalDegree("");
-        setTotalHour("");
-        setCategory("");
-        setLevel("");
-        setLecturerId("")
         alert("Courses created successfully");
       } else {
         console.log("Some error occured");
       }
-    } catch (err) {
-      console.log(err.response);
-    }
+    }).catch((err) => alert(err.response.data));
   };
 
   return (
     <div>
-        <header>
-           <a href='/admin' id="profile">
-               <div id="profilePhoto"></div>
-               <h4 id="name">Mohamed Ahmed Ali</h4>
-               <p id="email">MAA@ci.suez.edu.eg</p>
-           </a>
-       </header>
+        <a href='/admin' id="profileHeader">
+          <div id="profile"></div>
+        </a>
        <section id="addNewCourses">
         <div className='container'>
             <a href='/admin'><i className="bi bi-arrow-left"></i> Add Course</a>

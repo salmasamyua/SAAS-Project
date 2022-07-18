@@ -1,12 +1,20 @@
 import React, {useEffect, useState} from 'react'
 import './AdvisorCSS/styleProfile.css'
+import Nav from './Nav';
 
 export default function ProfileAdvisor() {
     const userjwt = localStorage['token'];
+    const gender = localStorage['gender'];
     const [profile, setProfile] = useState("");
     const [profilePic, setProfilePic] = useState("");
   useEffect(() => {
     document.title = 'SAAS | Profile';
+          if(gender === "female"){
+            setProfilePic("../Images/profile.jpeg")
+        }
+        else{
+            setProfilePic("../Images/profilemale.jpg")
+        }
     fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
         method: "Get",
         headers:{
@@ -17,18 +25,13 @@ export default function ProfileAdvisor() {
         .then((response) => response.json())
         .then((data) => {
           setProfile(data)
-          if(profile.gender === "female"){
-            setProfilePic("../Images/profile.jpeg")
-        }
-        else{
-            setProfilePic("../Images/profilemale.jpg")
-        }
         }
         );
-  });
+  }, [gender, userjwt] );
   return (
     <div>
         <section className='sectionProfile'>
+            <Nav/>
             <div className="row">
                 <div className="col-xl-3 col-sm-12">
                     <div className="colAdvisor0">

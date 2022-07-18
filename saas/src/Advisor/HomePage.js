@@ -3,6 +3,9 @@ import './AdvisorCSS/advisor.css';
 import ShowCalculator from './components/ShowCalculator';
 import ShowClass from './components/ShowClass';
 import ShowPdf from './components/ShowPdf';
+import ShowRegest from './components/ShowRegest';
+import ShowStudent from './components/ShowStudent';
+import Nav from './Nav';
 
 export default function HomePage() {
     useEffect(() => {
@@ -20,6 +23,14 @@ export default function HomePage() {
       const handleClassSchedule = () => {
           setClassSc(current => !current);
       }
+      var [student, setStudent] = useState(false);
+      const handleStudent = () => {
+          setStudent(current => !current);
+      }
+      var [regest, setRegest] = useState(false);
+      const handleRegest = () => {
+          setRegest(current => !current);
+      }
       
       if(pdf){
           return <ShowPdf/>
@@ -30,9 +41,16 @@ export default function HomePage() {
       else if(classSc){
           return <ShowClass/>
       }
+      else if(student){
+        return <ShowStudent/>
+      }
+      else if(regest){
+        return <ShowRegest/>
+      }
       else{
         return (
             <div className='advisor'>
+                <Nav/>
                 <section className="secAdvisor0">
                 <div className="container">
                     <div className="row">
@@ -62,11 +80,11 @@ export default function HomePage() {
                         <i className="bi bi-pen-fill"></i>
                         <h6>Subjects</h6>
                     </div>
-                    <div className="card4">
+                    <div className="card4"  onClick={handleStudent}>
                         <i className="bi bi-person-fill"></i>
                         <h6>Students</h6>
                     </div>
-                    <div className="card5">
+                    <div className="card5"   onClick={handleRegest}>
                         <i className="bi bi-window-fullscreen"></i>
                         <h6>Subject Regesteration</h6>
                     </div>

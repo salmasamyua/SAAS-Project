@@ -9,11 +9,11 @@ $mainFont: 'Lato', sans-serif;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    text-transform: capitalize;
 }
 
 body{
     font-family: $mainFont !important;
+    text-transform: capitalize;
 }
 
 div{
@@ -41,11 +41,15 @@ div{
                     margin-left: 8px;
                 }
             }
-            .dropdown-menu{
+            .dropdown{
+                a{
+                    color: rgba(255, 255, 255, 0.55) !important;
+                }
+               .dropdown-menu{
                 background-color: $mainColor;
                 a{
                     text-decoration: none;
-                    color: $seconderyColor;
+                    color: $seconderyColor !important;
                     display: block;
                     button, i{
                         float: right;
@@ -60,9 +64,11 @@ div{
                 }
                 a:hover, .dropdown-item.active{
                     background-color: $seconderyColor;
-                    color: $mainColor;
+                    color: $mainColor !important;
                 }
+            } 
             }
+            
         }
     }
 }

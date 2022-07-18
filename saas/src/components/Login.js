@@ -1,28 +1,13 @@
 import React, { useEffect, useState,useRef } from 'react';
 import '../CSS/styleLogin.css';
-//import axios from 'axios';
-import useAuth from '../hooks/useAuth';
-import { useNavigate, useLocation } from 'react-router-dom';
-//import { useNavigate } from 'react-router-dom';
-//import PropTypes from 'prop-types';
-//import {Redirect} from "react-router-dom";
-
-// async function loginUser(credentials) {
-//     return fetch('http://saasproject-001-site1.itempurl.com/api/Acount/Login', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(credentials)
-//     })
-//       .then(data => data.json())
-//    }
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
 
     const [email, setEmail] = useState('');
     const handleEmail = (e) =>{
-        setEmail(e.target.value.toLowerCase())
+        setEmail(e.target.value)
     }
 
     const [password, setPassword] = useState('');
@@ -31,11 +16,8 @@ export default function Login(){
     }
 
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
 
     const userRef = useRef();
-    const { setAuth } = useAuth();
 
     useEffect(() => {
         document.title = 'SAAS | Login';
@@ -44,120 +26,40 @@ export default function Login(){
 
     const handleSubmit = async event => {
         event.preventDefault();
-        try{
-            const result = await fetch('http://saasproject-001-site1.itempurl.com/api/Acount/Login', {
-            method: "POST",
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              email: email,
-              password: password
-            })
-          });
-            console.log(JSON.stringify(result?.data));
-            console.log(JSON.stringify(result));
-            if(result.data.states === 'success'){
-                const accessToken = result?.data?.token;
-                const roles = result?.data?.roles;
-                setAuth({ email, password, roles, accessToken });
-                navigate(from, { replace: true });
-            }
-            
-             if(result.data.status === 'fail'){
-                console.log(result.data.message);
-             }
-        }
-        catch(error)
-             {
-               console.log("This Email or Password is not correct", error);
-            }
-        
-        
-        // axios.post('http://saasproject-001-site1.itempurl.com/api/Acount/Login',{
-        //     email: email,
-        //     password: password,
-        //     headers: { 'Content-Type': 'application/json' },
-        //     withCredentials: true
-            
-        //  })
+    
+        axios.post('http://saasproject-001-site1.itempurl.com/api/Acount/Login',{
+            email: email,
+            password: password
+        }).then(
+            result => {
+                localStorage.setItem('role', result.data.userLogin.roles[0] )
+                localStorage.setItem('token', result.data.userLogin.token )
+                localStorage.setItem('gender', result.data.userLogin.gender )
                 
-                //  else if(result.data.status === 'success'){
-                //     if(result.data.userLogin.roles[0] === 'Student'){
-                //         console.log('Hello ', result.data.userLogin.id);
-                //         console.log(email, password, result.data.userLogin.roles[0]);
-                //         //navigate('/student');
-                //         window.location.assign("/student/home")
-                //         //return <Student/>
-                //      }
-                //      else if(result.data.userLogin.roles[0] === 'Instructor'){
-                //          console.log('Hello', result.data.userLogin.id);
-                //          window.location.assign("/advisor/homePage")
-                //         //return <Advisor/>
-                //      }
-                //      else if(result.data.userLogin.roles[0] === 'Coordinator'){
-                //          console.log('Hello', result);
-                //          window.location.assign("/admin")
-                //         //return <Admin/>
-                //      }
-                //      else {
-                //          console.log(result.data.userLogin.roles[0])
-                //      }
-                //  }
-            
-         
-        // const token = await loginUser({
-        //     email,
-        //     password
-        // });
-        // setToken(token);
-    }
-
-
-
-
-    // const handleApi = async (e) =>{
-    //     e.preventDefault();   
-
-    //     // axios.post('http://saasproject-001-site1.itempurl.com/api/Acount/Login',{
-    //     //     email: email,
-    //     //     password: password
-    //     // }).then(
-    //     //     result => {
-    //     //         if(result.data.status === 'fail'){
-    //     //             alert(result.data.message);
-    //     //         }
-    //     //         else if(result.data.status === 'success'){
-    //     //             if(result.data.userLogin.roles[0] === 'Student'){
-    //     //                 console.log('Hello ', result.data.userLogin.id);
-    //     //                 console.log(email, password, result.data.userLogin.roles[0]);
-    //     //                 //navigate('/student');    
-    //     //                 document.querySelector('form').action = "/student";             
-    //     //             }
-    //     //             else if(result.data.userLogin.roles[0] === 'Instructor'){
-    //     //                 console.log('Hello', result.data.userLogin.id);
-    //     //             }
-    //     //             else if(result.data.userLogin.roles[0] === 'Coordinator'){
-    //     //                 console.log('Hello', result);
-    //     //             }
-    //     //             else {
-    //     //                 console.log(result.data.userLogin.roles[0])
-    //     //             }
-    //     //         }
-    //     //     }
-    //     // ).catch(
-    //     //     error => {
-    //     //         alert("This Email or Password is not correct", error)
-    //     //     }
-    //     // )
-    // }
-
-        // if(navigate){
-        //     return <Navigate to="/home" />;
-        // }
-        // if(sessionStorage.getItem("user")){
-        //     return <Navigate to ={'/home'}/>;
-        //   }
+                if(result.data.status === 'fail'){
+                    alert(result.data.message);
+                }
+                else if(result.data.status === 'success'){
+                    if(result.data.userLogin.roles[0] === 'Student'){
+                        navigate('/home');        
+                    }
+                    else if(result.data.userLogin.roles[0] === 'Instructor'){
+                        navigate('/homePage');    
+                    }
+                    else if(result.data.userLogin.roles[0] === 'Coordinator'){
+                        navigate('/admin');    
+                    }
+                    else {
+                        console.log(result.data.userLogin.roles[0])
+                    }
+                }
+            }
+        ).catch(
+            error => {
+                alert("This Email or Password is not correct", error)
+            }
+        )
+        }
     return(
         <div className="login-wrapper">
         <div className="row">
@@ -221,7 +123,3 @@ export default function Login(){
         </div>
     )
 }
-
-
-// Login.propTypes = {
-//     setToken: PropTypes.func.isrequired="required"//   };

@@ -1,66 +1,41 @@
 import React, {  useState } from 'react';
+import axios from 'axios';
+import "../CSS/component.css";
 
-import '../CSS/admin.css';
-
-export default function AllStudents() {
-  window.onscroll = function () {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.querySelector("#name").style.display = "none";
-      document.querySelector("#email").style.display = "none";
-      document.querySelector("#profile").style.cssText = `
-                padding: 10px;
-                height: 100px;
-                background-image: none;
-                background-color: #064B68;
-                z-index: 2;
-                `;
-      document.querySelector("#profilePhoto").style.cssText = `
-                width: 70px;
-                height: 70px; 
-                `;
-      document.querySelector("header").style.marginBottom = "150px";
-      document.querySelector("#allStudent").style.marginTop = "-150px";
-    }
-  }; 
+export default function AllStudents() { 
 
   const userjwt = localStorage['token'];
-  //const [student, setStudent] = useState([]);
+  const [student, setStudent] = useState([]);
   const [level, setLevel] = useState("1");
   
   const handleSubmit = () =>{
-  const formData = new FormData();
-  formData.append("level", "level")
-    fetch('http://saasproject-001-site1.itempurl.com/api/Users/GetAllAdvisor', {
+    axios({
       method: "POST",
-      data: formData,
-      // body: JSON.stringify({
-      //   level: level
-      // }),
-    headers:{
-      Authorization : `Bearer ${userjwt}`,
-       'Accept': 'application/json',
-       'Content-Type': 'multipart/form-data'
-    }})
-    // .then((response) => response.json())
-    .then((data) => {
-      console.log(data)
-      setLevel(data)
-      if(level !== null){
-        console.log(level)
+      url: "http://saasproject-001-site1.itempurl.com/api/Users/GetAllStudent",
+      data: {
+        level: level,
+      },
+      headers: {
+        Authorization: `Bearer ${userjwt}`,
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+      },
+    })
+      .then((res) => {
+        setStudent(res.data);
+        // console.log(student)
+        // if(student.length === 0){
+        //   alert('There are no students in this level yet')
+        // }
         document.querySelector("ul").style.display = "block";
-      }     
-    }
-    );
+      })
+      .catch((err) => console.log(err.response));
   }
   return (
     <div>
-        <header>
-            <a href='/admin' id="profile">
-                <div id="profilePhoto"></div>
-                <h4 id="name">Mohamed Ahmed Ali</h4>
-                <p id="email">MAA@ci.suez.edu.eg</p>
-            </a>
-        </header>
+        <a href='/admin' id="profileHeader">
+          <div id="profile"></div>
+        </a>
         <section id='allStudent'>
             <div className='container'>
                 <a href='/admin'><i className="bi bi-arrow-left"></i> The Students</a>
@@ -74,19 +49,16 @@ export default function AllStudents() {
                 </select>
                 <button type="button" onClick={handleSubmit}> List</button>
                 </div>
-                <ul id="student" style={{display: "none"}}>
-                {/* {level && level.map(level => (
-                    <li key={level.id}>
-                    <h6>{level.fullName}</h6>
-                    <p>{level.id}</p>
-                    <p>{level.level}</p>
-                    <p>{level.email}</p>
-                    <p>{level.phone}</p>
-                    <a href=" " >View degrees </a>
-                    <button type="button" ><i className="bi bi-x-circle-fill"></i></button>
-                    <button type="button" ><i className="bi bi-pencil-fill"></i></button>
+                <ul id="student">
+                {student ? (student.map(student => (
+                    <li key={student.id}>
+                    <h6>{student.fullName}</h6>
+                    <p>{student.id}</p>
+                    <p>{student.level}</p>
+                    <p>{student.email}</p>
+                    <p>{student.phone}</p>
                   </li>
-                ))} */}
+                ))) : <li>There are problem in data</li> }
                 </ul>
               </div>
         </section>

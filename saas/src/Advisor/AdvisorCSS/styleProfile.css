@@ -17,7 +17,7 @@
 }
 
 .navbar .dropdown a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.55) !important;
 }
 
 .navbar .dropdown a img {
@@ -50,7 +50,7 @@
 
 .navbar .dropdown .dropdown-menu a:hover, .navbar .dropdown .dropdown-menu .active {
   background-color: #AAC9D3;
-  color: #064B68;
+  color: #064B68 !important;
 }
 
 .sectionProfile {

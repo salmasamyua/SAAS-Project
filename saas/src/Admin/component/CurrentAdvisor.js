@@ -1,27 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import '../CSS/admin.css';
+import "../CSS/component.css";
 //import axios from 'axios'
 
 export default function CurrentAdvisor() {
-  window.onscroll = function (){
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.querySelector("#name").style.display = "none";
-      document.querySelector("#email").style.display = "none";
-      document.querySelector("#profile").style.cssText = `
-                padding: 10px;
-                height: 100px;
-                background-image: none;
-                background-color: #064B68;
-                z-index: 2;
-                `;
-      document.querySelector("#profilePhoto").style.cssText = `
-                width: 70px;
-                height: 70px; 
-                `;
-      document.querySelector("header").style.marginBottom = "150px";
-      document.querySelector("#advisor").style.marginTop = "-150px";
-    }
-  };
   const userjwt = localStorage['token'];
   const [advisors, setAdvisors] = useState("");
   useEffect(() => {
@@ -51,13 +32,9 @@ export default function CurrentAdvisor() {
   // }
   return (
     <div>
-          <header>
-            <a href='/admin' id="profile">
-                <div id="profilePhoto"></div>
-                <h4 id="name">Mohamed Ahmed Ali</h4>
-                <p id="email">MAA@ci.suez.edu.eg</p>
-            </a>
-          </header>
+          <a href='/admin' id="profileHeader">
+              <div id="profile"></div>
+          </a>
           <section id='advisor'>
             <div className='container'>
                 <a href='/admin'><i className="bi bi-arrow-left"></i> The Advisors</a>

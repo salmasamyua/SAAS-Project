@@ -4,11 +4,11 @@
   padding: 0px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  text-transform: capitalize;
 }
 
 body {
   font-family: "Lato", sans-serif !important;
+  text-transform: capitalize;
 }
 
 div .navbar {
@@ -39,21 +39,25 @@ div .navbar .navbar-collapse a img {
   margin-left: 8px;
 }
 
-div .navbar .navbar-collapse .dropdown-menu {
+div .navbar .navbar-collapse .dropdown a {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+div .navbar .navbar-collapse .dropdown .dropdown-menu {
   background-color: #064B68;
 }
 
-div .navbar .navbar-collapse .dropdown-menu a {
+div .navbar .navbar-collapse .dropdown .dropdown-menu a {
   text-decoration: none;
-  color: #AAC9D3;
+  color: #AAC9D3 !important;
   display: block;
 }
 
-div .navbar .navbar-collapse .dropdown-menu a button, div .navbar .navbar-collapse .dropdown-menu a i {
+div .navbar .navbar-collapse .dropdown .dropdown-menu a button, div .navbar .navbar-collapse .dropdown .dropdown-menu a i {
   float: right;
 }
 
-div .navbar .navbar-collapse .dropdown-menu a button {
+div .navbar .navbar-collapse .dropdown .dropdown-menu a button {
   padding: 4px;
   border: none;
   background-color: #ffffff;
@@ -61,9 +65,9 @@ div .navbar .navbar-collapse .dropdown-menu a button {
   font-size: small;
 }
 
-div .navbar .navbar-collapse .dropdown-menu a:hover, div .navbar .navbar-collapse .dropdown-menu .dropdown-item.active {
+div .navbar .navbar-collapse .dropdown .dropdown-menu a:hover, div .navbar .navbar-collapse .dropdown .dropdown-menu .dropdown-item.active {
   background-color: #AAC9D3;
-  color: #064B68;
+  color: #064B68 !important;
 }
 
 .sectionProfile {

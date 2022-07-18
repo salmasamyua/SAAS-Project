@@ -6,11 +6,13 @@ import AddCourses from './component/AddCourses';
 import AllStudents from './component/AllStudents';
 import AddStudent from './component/AddStudent';
 import './CSS/admin.css';
+import axios from 'axios';
 
 export default function Admin() {
 
   const userjwt = localStorage['token'];
   const [advisor, setAdvisor] = useState("");
+  const [onOff, setOnOff] = useState(false);
     useEffect(() => {
         document.title = 'SAAS | Admin';
         fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
@@ -25,7 +27,59 @@ export default function Admin() {
             setAdvisor(data)
           }
           );
+          fetch('http://saasproject-001-site1.itempurl.com/api/RecCourses/IsCheckControll', {
+            method: "Get",
+            headers:{
+              Authorization : `Bearer ${userjwt}`,
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+            }})
+            .then((response) => response.json())
+            .then((data) => {
+              if(data === true){
+                setOnOff(data)
+              }else{
+                setOnOff(data)
+              }
+              //console.log(data)
+            }
+            );
       });
+      const handleControl = () => {
+        //setOnOff(e.target.value)
+        console.log(!onOff)
+        setOnOff(!onOff)
+        console.log(onOff)
+        // if(onOff.value === "true"){
+        //   setOnOff(true)
+        // // setOnOff(1)
+        // }else{
+        //  setOnOff(false)
+        // // setOnOff(0)
+        // }
+      //   console.log(onOff)
+        axios({
+          method: "PUT",
+          url: "http://saasproject-001-site1.itempurl.com/api/RecCourses/EditControll",
+          data: {
+             onOff,
+          },
+          headers: {
+            Authorization: `Bearer ${userjwt}`,
+            'Content-Type': 'application/json',
+          },
+        }).then((response) => response.json())
+          .then((res) => {
+            if(res === true){
+              setOnOff(res)
+            }else{
+              setOnOff(res)
+            }
+            console.log(res)
+            alert(res.message)
+          })
+          .catch((err) => console.log(err.response, err));
+      }
       window.onscroll = function () {
         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
           document.querySelector("#name").style.display = "none";
@@ -42,10 +96,6 @@ export default function Admin() {
                     height: 70px; 
                     `;
           document.querySelector("header").style.marginBottom = "150px";
-          //document.querySelectorAll("#add, #advisor, #allCourses, #addNewCourses, #allStudent, #addStudents").style.marginTop = "-150px";
-        //   document.querySelector("#profilePhoto").addEventListener('click', function(){
-        //     location.href = 'Admin.html';
-        //   })
         }
       }; 
       
@@ -129,7 +179,10 @@ export default function Admin() {
                           name="btnradio"
                           id="btnradio1"
                           autoComplete="off"
-                          defaultChecked
+                          checked={onOff === true}
+                          onChange={e => setOnOff(e.target.value)}
+                          value="true"
+                           onClick={handleControl}
                       />
                       <label className="btn position-static btn-outline-primary" htmlFor="btnradio1"
                           >On</label>
@@ -140,6 +193,10 @@ export default function Admin() {
                           name="btnradio"
                           id="btnradio2"
                           autoComplete="off"
+                          checked={onOff === false}
+                          onChange={e => setOnOff(e.target.value)}
+                          value="false"
+                           onClick={handleControl}
                       />
                       <label className="btn position-static btn-outline-primary" htmlFor="btnradio2"
                           >off</label>
