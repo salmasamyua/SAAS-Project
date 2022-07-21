@@ -59,6 +59,32 @@ header #profile p {
   margin-bottom: 30px;
 }
 
+.sec1 .toggle {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sec1 .toggle button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.sec1 .toggle button:hover {
+  background-color: #aaa;
+}
+
+.sec1 .toggle button.active {
+  background: #f00;
+  color: #fff;
+}
+
 .sec1 .btn-group {
   margin-bottom: 50px;
 }

@@ -12,7 +12,7 @@ export default function Admin() {
 
   const userjwt = localStorage['token'];
   const [advisor, setAdvisor] = useState("");
-  const [onOff, setOnOff] = useState(false);
+  const [onOff, setOnOff] = useState("");
     useEffect(() => {
         document.title = 'SAAS | Admin';
         fetch('http://saasproject-001-site1.itempurl.com/api/Acount/GetCurrentUser', {
@@ -36,39 +36,51 @@ export default function Admin() {
             }})
             .then((response) => response.json())
             .then((data) => {
+              //console.log(data)
               if(data === true){
                 setOnOff(data)
               }else{
                 setOnOff(data)
+              //console.log(onOff)
               }
-              //console.log(data)
             }
             );
       });
+      // useEffect(async ()=>(
+      //   await axios({
+      //     method: "PUT",
+      //     url: "http://saasproject-001-site1.itempurl.com/api/RecCourses/EditControll",
+      //     data: {
+      //        ischeck: onOff,
+      //     },
+      //     headers: {
+      //       Authorization: `Bearer ${userjwt}`,
+      //       'Content-Type': 'application/json',
+      //     },
+      //   })
+      //     .then((res) => {
+      //       if(res === true){
+      //         setOnOff(res)
+      //       }else{
+      //         setOnOff(res)
+      //       }
+      //       console.log(res)
+      //       console.log(res.message)
+      //     })
+      //     .catch((err) => console.log(err.response, err))
+      // ), [onOff, userjwt])
       const handleControl = () => {
-        //setOnOff(e.target.value)
-        console.log(!onOff)
-        setOnOff(!onOff)
-        console.log(onOff)
-        // if(onOff.value === "true"){
-        //   setOnOff(true)
-        // // setOnOff(1)
-        // }else{
-        //  setOnOff(false)
-        // // setOnOff(0)
-        // }
-      //   console.log(onOff)
         axios({
           method: "PUT",
           url: "http://saasproject-001-site1.itempurl.com/api/RecCourses/EditControll",
           data: {
-             onOff,
+             ischeck: onOff,
           },
           headers: {
             Authorization: `Bearer ${userjwt}`,
             'Content-Type': 'application/json',
           },
-        }).then((response) => response.json())
+        })
           .then((res) => {
             if(res === true){
               setOnOff(res)
@@ -196,7 +208,7 @@ export default function Admin() {
                           checked={onOff === false}
                           onChange={e => setOnOff(e.target.value)}
                           value="false"
-                           onClick={handleControl}
+                          onClick={handleControl}
                       />
                       <label className="btn position-static btn-outline-primary" htmlFor="btnradio2"
                           >off</label>
@@ -273,7 +285,7 @@ export default function Admin() {
 
               <section id="sec5">
                   <div className="container text-center">
-                      <a href="/login"><i className="bi bi-box-arrow-right"></i> LOGOUT</a>
+                      <a href="/"><i className="bi bi-box-arrow-right"></i> LOGOUT</a>
                   </div>
               </section>
           </div>

@@ -287,18 +287,18 @@
   font-size: larger;
 }
 
-#students #select {
-  margin: 30px 0 0 40px;
+#students #select, #students #allCourses, #studentsReg #select, #studentsReg #allCourses {
+  margin: 30px 20px 0 20px;
   padding: 20px 40px 30px 40px;
   background-color: #ffffff;
 }
 
-#students #select label {
+#students #select label, #students #allCourses label, #studentsReg #select label, #studentsReg #allCourses label {
   font-size: 20px;
   color: #064B68;
 }
 
-#students #select select {
+#students #select select, #students #allCourses select, #studentsReg #select select, #studentsReg #allCourses select {
   display: block;
   margin: 5px 0 10px 0;
   border-radius: 30px;
@@ -308,7 +308,7 @@
   background-color: rgba(233, 231, 231, 0.842);
 }
 
-#students #select button {
+#students #select button, #students #allCourses button, #studentsReg #select button, #studentsReg #allCourses button {
   background-color: #064B68;
   color: #ffffff;
   width: 100%;
@@ -319,47 +319,48 @@
   font-size: 25px;
 }
 
-#students #student {
-  margin: 50px 10px;
+#students #student, #students #studentReg, #students #courses, #studentsReg #student, #studentsReg #studentReg, #studentsReg #courses {
+  margin: 50px 20px;
+  padding: 0px;
 }
 
-#students #student li {
+#students #student li, #students #studentReg li, #students #courses li, #studentsReg #student li, #studentsReg #studentReg li, #studentsReg #courses li {
   list-style-type: none;
   background-color: white;
   padding: 10px 20px;
   margin-bottom: 20px;
 }
 
-#students #student li h6 {
+#students #student li h6, #students #studentReg li h6, #students #courses li h6, #studentsReg #student li h6, #studentsReg #studentReg li h6, #studentsReg #courses li h6 {
   color: #064B68;
   font-size: 25px;
   margin-bottom: 20px;
 }
 
-#students #student li p {
+#students #student li p, #students #studentReg li p, #students #courses li p, #studentsReg #student li p, #studentsReg #studentReg li p, #studentsReg #courses li p {
   line-height: 0.5;
   margin-left: 10px;
 }
 
-#students #student li #modal {
+#students #student li #modal, #students #studentReg li #modal, #students #courses li #modal, #studentsReg #student li #modal, #studentsReg #studentReg li #modal, #studentsReg #courses li #modal {
   margin-top: 20px;
   text-align: center;
 }
 
-#students #student li #modal .btn {
+#students #student li #modal .btn, #students #studentReg li #modal .btn, #students #courses li #modal .btn, #studentsReg #student li #modal .btn, #studentsReg #studentReg li #modal .btn, #studentsReg #courses li #modal .btn {
   background-color: #AAC9D3;
-  font-size: 22px;
+  font-size: 18px;
   padding: 10px 20px;
   border-radius: 40px;
-  font-weight: 700;
+  color: #064B68;
 }
 
-#students #student li #modal .btn:hover {
+#students #student li #modal .btn:hover, #students #studentReg li #modal .btn:hover, #students #courses li #modal .btn:hover, #studentsReg #student li #modal .btn:hover, #studentsReg #studentReg li #modal .btn:hover, #studentsReg #courses li #modal .btn:hover {
   color: #064B68;
   background-color: #ffffff;
 }
 
-#students #student li #modal .modal-body {
+#students #student li #modal .modal-body, #students #studentReg li #modal .modal-body, #students #courses li #modal .modal-body, #studentsReg #student li #modal .modal-body, #studentsReg #studentReg li #modal .modal-body, #studentsReg #courses li #modal .modal-body {
   text-align: left;
 }
 /*# sourceMappingURL=advisor.css.map */

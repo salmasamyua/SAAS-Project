@@ -4,37 +4,29 @@ import Nav from '../Nav'
 import axios from 'axios';
 
 export default function ShowSubject() {
-    const userjwt = localStorage['token'];
-    const [student, setStudent] = useState([]);
-    const [level, setLevel] = useState("1");
-    
-    const handleSubmit = () =>{
-      axios({
-        method: "POST",
-        url: "http://saasproject-001-site1.itempurl.com/api/Users/GetAllStudent",
-        data: {
-          level: level,
-        },
-        headers: {
-          Authorization: `Bearer ${userjwt}`,
-          Accept: "application/json",
-          "Content-Type": "multipart/form-data",
-        },
+  const userjwt = localStorage['token'];
+  const [courses, setCourses] = useState([]);
+  const [category, setCategory] = useState("SEN");
+  
+  const handleSubmit = () =>{
+    axios({
+      method: "POST",
+      url: "http://saasproject-001-site1.itempurl.com/api/Courses/GetAllCourses",
+      data: {
+        categoryid: category,
+      },
+      headers: {
+        Authorization: `Bearer ${userjwt}`,
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+      },
+    })
+      .then((res) => {
+        setCourses(res.data);
+        document.querySelector("#courses").style.display = "block";
       })
-        .then((res) => {
-          setStudent(res.data);
-          // console.log(student)
-          // if(student.length === 0){
-          //   alert('There are no students in this level yet')
-          // }
-          document.querySelector("#student").style.display = "block";
-          document.querySelector('#modal').style.display = "block";
-        })
-        .catch((err) => console.log(err.response));
-    }
-    const handleModal = () =>{
-        console.log(student.id)
-    }
+      .catch((err) => console.log(err.response));
+  }
   return (
     <div>
     <div className='advisor'>
@@ -54,53 +46,33 @@ export default function ShowSubject() {
               </div>
           </div>
         </section>
-        <section id='students'>
-          <div className="container">
-                <div id='select'>
-                    <label htmlFor="studentLevel">choose the level of the students you want to list:</label>
-                    <select name="studentLevel" id="studentLevel" value={level} onChange={(e) => setLevel(e.target.value)}>
-                        <option value="1">Level 1</option>
-                        <option value="2">Level 2</option>
-                        <option value="3">Level 3</option>
-                        <option value="4">Level 4</option>
-                    </select>
-                    <button type="button" onClick={handleSubmit}> List</button>
-                </div>
-                <ul id="student">
-                {student ? (student.map(student => (
-                    <li key={student.id} onClick={()=>handleModal(student.id)}>
-                        <h6>{student.fullName}</h6>
-                        <p>{student.id}</p>
-                        <p>{student.level}</p>
-                        <p>{student.email}</p>
-                        <p>{student.phone}</p>
-                        <div  id="modal">
-                        <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Add Subject
-                        </button> 
-                        <div  className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div className="modal-dialog modal-dialog-centered">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                <h5 className="modal-title" id="staticBackdropLabel">Recommended Courses</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body">
-                                    List of Subjects:   
-                                    {student.id}
-                                </div>
-                                <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary">Save</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div> 
-                  </li>
-                ))) : <li>There are problem in data</li> }
-                </ul>
+        <section id='allCourses'>
+          <div className='container'>
+            <div id="selectCourse">
+            <label htmlFor="course">choose the category of the courses you want to list:</label>
+            <select name="course" id="course" value={category} onChange={e => setCategory(e.target.value)}>
+              <option value="SEN">SEN</option>
+              <option value="CSC">CSC</option>
+              <option value="ISC">ISC</option>
+              <option value="MAT">MAT</option>
+              <option value="GEN">GEN</option>
+              <option value="UNI">UNI</option>
+            </select>
+            <button type="button" onClick={handleSubmit}> List</button>
             </div>
+            <ul id="courses">
+              {courses ? (
+                courses.map(course =>(
+                  <li key={course.courseCode}>
+                  <h6>{course.courseName}</h6>
+                  <p>{course.courseCode}</p>
+                  <p>{course.level}</p>
+                  <p>{course.instructorName}</p>
+                </li>
+                ))
+              ) : <li>There are no courses in this category</li> }
+            </ul>
+          </div>
         </section>
         <section className='goBack'>
           <a href='/homePage'>Go Back</a>

@@ -207,9 +207,9 @@
      font-size: larger;
  }
 }
-#students{
-    #select{
-        margin: 30px 0 0 40px;
+#students, #studentsReg{
+    #select, #allCourses{
+        margin: 30px 20px 0 20px;
         padding: 20px 40px 30px 40px;
         background-color: $white;
         label{
@@ -236,8 +236,9 @@
           font-size: 25px;
         }
       }
-      #student{
-        margin: 50px 10px;
+      #student, #studentReg, #courses{
+        margin: 50px 20px;
+        padding: 0px;
         li{
           list-style-type: none;
           background-color: white;
@@ -257,10 +258,10 @@
             text-align: center;
             .btn{
                 background-color: $seconderyColor;
-                font-size: 22px;
+                font-size: 18px;
                 padding: 10px 20px;
                 border-radius: 40px;
-                font-weight: 700;
+                color: $mainColor;
             }
             .btn:hover{
                 color: $mainColor;

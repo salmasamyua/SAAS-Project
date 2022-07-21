@@ -77,7 +77,7 @@ import axios from 'axios';
                     <div className="collapse" id="collapseExample">
                         {course.map(course =>(
                             <div key={course.courseName} className="card card-body">
-                                <p>{course.courseName} <b>{course.gpa}</b></p>
+                                <p>{course.courseName} <b>{parseFloat(course.gpa).toPrecision(3)}</b></p>
                             </div>  
                         ))}
                     </div>

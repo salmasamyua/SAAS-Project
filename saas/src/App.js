@@ -3,7 +3,6 @@ import React from 'react'
 import { Route, Routes} from 'react-router-dom';
 import Login from './components/Login';
 import Admin from './Admin/Admin';
-//import useToken from './useToken';
 import HomePage from './Advisor/HomePage';
 import Profile from './Student/Profile';
 import Home from './Student/Home';
@@ -15,13 +14,12 @@ import ProfileAdvisor from './Advisor/ProfileAdvisor';
 const role = localStorage["role"]
 
 function App (){
-
     return (
       <div className="App">
             {/* <Login/> 
             <Navbar/>*/}
             <Routes>
-                <Route path="/login" element={<Login />}/>
+                <Route path="/"element={<Login />}/>
 
                 {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
 

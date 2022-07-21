@@ -33,7 +33,7 @@ export default function AllCourses() {
           <div id="profile"></div>
         </a>
     <section id='allCourses'>
-    <div className='container'>
+     <div className='container'>
             <a href='/admin'><i className="bi bi-arrow-left"></i> The Courses</a>
             <div id="selectCourse">
             <label htmlFor="course">choose the category of the courses you want to list:</label>

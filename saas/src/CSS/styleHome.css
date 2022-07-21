@@ -364,7 +364,7 @@ div .navbar .navbar-collapse .dropdown .dropdown-menu a:hover, div .navbar .navb
 .sectionHome3 .reco #modal .btn {
   background-color: #AAC9D3;
   font-size: 22px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   border-radius: 40px;
   font-weight: 700;
 }
@@ -372,5 +372,19 @@ div .navbar .navbar-collapse .dropdown .dropdown-menu a:hover, div .navbar .navb
 .sectionHome3 .reco #modal .btn:hover {
   color: #064B68;
   background-color: #ffffff;
+}
+
+.sectionHome3 .reco #modal #list {
+  padding: 0 30px;
+}
+
+.sectionHome3 .reco #modal #list p {
+  margin-top: 10px;
+  color: #064B68;
+  text-align: center;
+}
+
+.sectionHome3 .reco #modal #list input {
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=styleHome.css.map */

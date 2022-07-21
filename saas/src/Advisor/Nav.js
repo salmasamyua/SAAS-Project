@@ -50,7 +50,7 @@ import './AdvisorCSS/advisor.css';
                     </li> */}
                     <li><NavLink className="dropdown-item" to="/infoApp">Info App</NavLink></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><NavLink className="dropdown-item" to="/login">Log out <i className="bi bi-box-arrow-right"></i></NavLink></li>
+                    <li><NavLink className="dropdown-item" to="/">Log out <i className="bi bi-box-arrow-right"></i></NavLink></li>
                   </ul>
                 </div>
             </div>

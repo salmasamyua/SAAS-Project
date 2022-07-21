@@ -68,7 +68,7 @@ export default function AddAdvisor() {
         <section id='add'>
         <div className='container'>
                 <a href='/admin'><i className="bi bi-arrow-left"></i> Add Advisor</a>
-                <form  onSubmit={handleAddAdvisor}>
+                <form>
                   <label htmlFor="SSN">Enter advisor SSN:</label>
                   <input value={SSN} onChange={(e) => setSSN(e.target.value)} maxLength='14' type="text" id="SSN" name="SSN" required />
                   <label htmlFor="nameEnglish">Enter advisor name (English):</label>
@@ -103,7 +103,7 @@ export default function AddAdvisor() {
                   <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" required />
                   <label htmlFor="password">Enter temporary password confirme:</label>
                   <input value={passwordConfirmed} onChange={(e) => setPasswordConfirmed(e.target.value)} type="password" id="passwordConfirmed" name="passwordConfirmed" required />
-                  <button type="button" id="addbtn">Add</button>
+                  <button onClick={handleAddAdvisor} type="button" id="addbtn">Add</button>
                 </form>
          </div>
         </section>

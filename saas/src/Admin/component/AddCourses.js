@@ -11,8 +11,8 @@ export default function AddCourses() {
   const [courseNameArabic, setCourseNameArabic] = useState("");
   const [category, setCategory] = useState("SEN");
   const [level, setLevel] = useState("1");
-  const [totalHour, setTotalHour] = useState("");
-  const [totalDegree, setTotalDegree] = useState("");
+  const [totalHour, setTotalHour] = useState("3");
+  const [totalDegree, setTotalDegree] = useState("100");
   const [lecturerId, setLecturerId] = useState("");
 
   const handleAddCourse = async (e) => {
@@ -35,8 +35,9 @@ export default function AddCourses() {
            'Accept': 'application/json',
            'Content-Type': 'application/json'
       }
-    }).then(res => {
-      if (res.status === 200) {
+    })
+    .then(res => {
+      if (res.status === 200 || res.status === "Success") {
         alert("Courses created successfully");
       } else {
         console.log("Some error occured");

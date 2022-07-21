@@ -53,6 +53,25 @@ header{
   h3 {
     @include h3();
   }
+  .toggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .toggle button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  .toggle button:hover {
+    background-color: #aaa;
+  }
+  
+  .toggle button.active {
+    background: #f00;
+    color: #fff;
+  }
   .btn-group {
     margin-bottom: 50px;
     .btn {

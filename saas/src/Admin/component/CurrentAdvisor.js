@@ -21,7 +21,7 @@ export default function CurrentAdvisor() {
   })
   
   // const handleDeleteAdvisors =(id) =>{
-  //   axios.delete(`'http://saasproject-001-site1.itempurl.com/api/Users/Delete' + ${id}`,{
+  //   axios.delete(`http://saasproject-001-site1.itempurl.com/api/Users/Delete/${id}`,{
   //     headers:{
   //       Authorization : `Bearer ${userjwt}`,
   //        'Accept': 'application/json',

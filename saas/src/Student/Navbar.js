@@ -98,7 +98,7 @@ export default function Navbar() {
                     </li>
                     <li><hr className="dropdown-divider" /></li>
                     <li>
-                        <NavLink className="dropdown-item" to="/login"
+                        <NavLink className="dropdown-item" to="/"
                         >Log out <i className="bi bi-box-arrow-right"></i
                         ></NavLink>
                     </li>

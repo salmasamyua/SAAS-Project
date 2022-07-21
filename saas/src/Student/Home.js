@@ -13,7 +13,11 @@ import Navbar from './Navbar';
   const [student, setStudent] = useState("");
   const [message, setMassege] = useState("");
   const [courses, setCourses] = useState("");
-  //const [semseter, setSemester] = useState([])
+  const [max, setMax] = useState(0);
+  const [min, setMin] = useState('')
+  const [arry, setArry] = useState([]);
+  const [arrOfCourses, setArrOfCourses] = useState([]);
+  //var coursess, element, body;
     useEffect(() => {
       document.title = 'SAAS | Home';
         fetch('http://saasproject-001-site1.itempurl.com/api/Students/GetTotalHoursAndGpa', {
@@ -63,7 +67,7 @@ import Navbar from './Navbar';
             //   }
             //   );
       });
-    const handleControl = (e) => {
+    const handleControl = async (e) => {
       e.preventDefault();
       fetch('http://saasproject-001-site1.itempurl.com/api/RecCourses/IsCheckControll', {
         method: "Get",
@@ -82,43 +86,76 @@ import Navbar from './Navbar';
           //console.log(data)
         }
         );
+        await fetch('http://saasproject-001-site1.itempurl.com/api/RecCourses/RecommendedCourses', {
+          method: "POST",
+          headers:{
+            Authorization : `Bearer ${userjwt}`,
+             'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          }})
+          .then((response) => response.json())
+          .then((data) => {
+            if(data.status === "Success"){
+              console.log(data)
+              setMin(data.min)
+              setMax(data.max)
+              //setMax(Math.ceil(data.max/3))
+              console.log(max)
+              setArrOfCourses(data.courses);
+              //coursess = data.courses;
+              // body = document.getElementById("list");
+              // body.innerHTML += `
+              //  <p> You have ${data.max} max hour to ${data.min} min hour.</p>
+              //  <p>You must choose ${max} courses or less.</p>
+              // `;
+              // for (let index = 0; index < coursess.length; index++) {
+              //   element = coursess[index];
+              //   body.innerHTML += `
+              //     <div className="form-check">
+              //       <input className="form-check-input" type="checkbox" onClick=${[...arry, element]} value=${element} id=${index}>
+              //       <label className="form-check-label" for=${index}>
+              //         ${element}
+              //       </label>
+              //     </div>
+              //   `;
+              // }
+              console.log(arry)
+            }else{
+              document.querySelector('#modal').style.display = "none";
+              alert(data.message)
+            }
+          }
+          );
     }
-      // const state = {
-      //   labels: [semseter.semseterName],
-      //   datasets: [
-      //         {
-      //           label: 'Performance',
-      //           fill: true,
-      //           lineTension: 0.5,
-      //           backgroundColor: "rgba(255,255,255,1.0)",
-      //           borderColor: "rgba(0,0,0,0.1)",
-      //           borderWidth: 2,
-      //           data: [parseFloat(semseter.gpAofSemester)],
-      //         }
-      //   ]
+
+    const handleSave = () =>{
+      var array = JSON.stringify(arry);
+      if(document.querySelectorAll('input[type=checkbox]:checked').length <= Math.ceil(max/3)){
+        console.log("hello", arry)
+        alert("Are you ready you want choose this courses?")
+        fetch('http://saasproject-001-site1.itempurl.com/api/RecCourses/RegisterRecCoursesForStudent', {
+          method: "POST",
+          body: array, 
+          headers:{
+            Authorization : `Bearer ${userjwt}`,
+             'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          }})
+          .then((response) => response.json())
+          .then((data) => {
+            if(data.Status === "Success"){
+              alert(data.message)
+              document.querySelector('#modal').style.display = "none";
+            }else{
+              alert(data.message)
+            }
+          }).catch(err => console.log(err))
+      }else{
+        alert(`"You must choose ${max} courses or less."`)
+      }
       
-      // } 
-      // const colors = (str) =>{
-      //   if(str === "M"){
-      //     setColor("pink")
-      //     return color;
-      //   } else if(str === 'U'){
-      //     setColor('purple')
-      //     return color;
-      //   } else if(str === 'C'){
-      //     setColor('cyan')
-      //     return color;
-      //   } else if(str === 'I'){
-      //     setColor('indigo')
-      //     return color;
-      //   } else if(str === 'S'){
-      //     setColor('deepOrange')
-      //     return color;
-      //   } else{
-      //     setColor('green')
-      //     return color;
-      //   }
-      // }
+    }
+      
     return (
       <div>
         <Navbar/>
@@ -209,15 +246,25 @@ import Navbar from './Navbar';
                 <div className="modal-dialog modal-dialog-centered">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h5 className="modal-title" id="staticBackdropLabel">Recommended Courses</h5>
+                      <h5 className="modal-title" id="staticBackdropLabel">Your Recommended Courses</h5>
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div className="modal-body">
-                        your Courses :
+                    <div className="modal-body" id='list'>
+                      <p> You have {max} max hour to {min} min hour.</p>
+                      <p>You must choose {Math.ceil(max/3)} courses or less.</p>
+                      {/* onClick={[...arry, courses]} */}
+                      {arrOfCourses && arrOfCourses.map((courses, index) => (
+                        <div className="form-check" key={index}>
+                        <input className="form-check-input" type="checkbox" onClick={() => setArry([...arry, courses])} value={courses} id={index}/>
+                        <label className="form-check-label" htmlFor={index}>
+                          {courses}
+                        </label>
+                      </div>
+                      ))}
                     </div>
                     <div className="modal-footer">
                       <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" className="btn btn-primary">Save</button>
+                      <button type="button" onClick={handleSave} className="btn btn-primary">Save</button>
                     </div>
                   </div>
                 </div>

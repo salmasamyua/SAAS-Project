@@ -5,6 +5,7 @@ import ShowClass from './components/ShowClass';
 import ShowPdf from './components/ShowPdf';
 import ShowRegest from './components/ShowRegest';
 import ShowStudent from './components/ShowStudent';
+import ShowSubject from './components/ShowSubject';
 import Nav from './Nav';
 
 export default function HomePage() {
@@ -31,6 +32,10 @@ export default function HomePage() {
       const handleRegest = () => {
           setRegest(current => !current);
       }
+      var [subject, setSubject] = useState(false);
+      const handleSubject = () => {
+          setSubject(current => !current);
+      }
       
       if(pdf){
           return <ShowPdf/>
@@ -46,6 +51,9 @@ export default function HomePage() {
       }
       else if(regest){
         return <ShowRegest/>
+      }
+      else if(subject){
+        return <ShowSubject/>
       }
       else{
         return (
@@ -76,15 +84,15 @@ export default function HomePage() {
                         <i className="bi bi-journal-bookmark-fill"></i>
                         <h6>Guide Book</h6>
                     </div>
-                    <div className="card3">
+                    <div className="card3" onClick={handleSubject}>
                         <i className="bi bi-pen-fill"></i>
                         <h6>Subjects</h6>
                     </div>
-                    <div className="card4"  onClick={handleStudent}>
+                    <div className="card4" onClick={handleStudent}>
                         <i className="bi bi-person-fill"></i>
                         <h6>Students</h6>
                     </div>
-                    <div className="card5"   onClick={handleRegest}>
+                    <div className="card5" onClick={handleRegest}>
                         <i className="bi bi-window-fullscreen"></i>
                         <h6>Subject Regesteration</h6>
                     </div>

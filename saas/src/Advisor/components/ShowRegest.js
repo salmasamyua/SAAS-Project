@@ -27,13 +27,13 @@ export default function ShowRegest() {
           // if(student.length === 0){
           //   alert('There are no students in this level yet')
           // }
-          document.querySelector("#student").style.display = "block";
+          document.querySelector("#studentReg").style.display = "block";
         })
         .catch((err) => console.log(err.response));
     }
     const handleModal = () =>{
         document.querySelector('#modal').style.display = "block";
-        console.log(student.id)
+        //console.log(student.id)
     }
   return (
     <div>
@@ -54,7 +54,7 @@ export default function ShowRegest() {
               </div>
           </div>
         </section>
-        <section id='students'>
+        <section id='studentsReg'>
           <div className="container">
                 <div id='select'>
                     <label htmlFor="studentLevel">choose the level of the students you want to list:</label>
@@ -66,37 +66,38 @@ export default function ShowRegest() {
                     </select>
                     <button type="button" onClick={handleSubmit}> List</button>
                 </div>
-                <ul id="student">
-                {student ? (student.map(student => (
-                    <li key={student.id} onClick={handleModal}>
+                <ul id="studentReg">
+                {student ? (student.map((student, index) => (
+                    <li key={index} onClick={handleModal}>
                         <h6>{student.fullName}</h6>
                         <p>{student.id}</p>
                         <p>{student.level}</p>
                         <p>{student.email}</p>
                         <p>{student.phone}</p>
-                  <div id="modal" style={{display: "none"}}>
-                  <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Add Subject
-                  </button> 
-                  <div  className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="staticBackdropLabel">Recommended Courses</h5>
-                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div key={index} id="modal">
+                        <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          Add Subject
+                        </button> 
+                        <div  className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h5 className="modal-title" id="staticBackdropLabel">Recommended Courses</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div className="modal-body">
+                                  List of Subjects:
+                                  {student.id}
+                                  <p>{index}</p>
+                              </div>
+                              <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-primary">Save</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="modal-body">
-                            List of Subjects:
-                            
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" className="btn btn-primary">Save</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  </div> 
+                        </div> 
                   </li>
                 ))) : <li>There are problem in data</li> }
                 </ul>
